@@ -1,5 +1,3 @@
-package com.mycompany.clinicaveterinaria;
-
 import java.util.ArrayList;
 
 public class Animal
@@ -7,7 +5,7 @@ public class Animal
     String name, race;
     Time birthDate;
     Tutor tutor;
-    ArrayList<Vacina> cartaoDeVacina = new ArrayList<Vacina>();
+    ArrayList<VacinaAplicada> cartaoDeVacina = new ArrayList<VacinaAplicada>();
     ArrayList<Consulta> prontuario = new ArrayList<Consulta>();
 
     public Animal(String name, String race, Time birthDate, Tutor tutor){
@@ -16,27 +14,18 @@ public class Animal
         this.birthDate = birthDate;
         this.tutor = tutor;
     }
-    public void incluirVacina(Vacina vac){
+    public void incluirVacina(VacinaAplicada vac){
         cartaoDeVacina.add(vac);
     }
 
-    //public void consulVac(Vacina vac){
-    //    System.out.println("vacina do Tipo:" + vac.getTipo() + "valor: R$ "+ vac.getCusto());
-    //}
-    //public void imprimirVac(){
-    //    for(Vacina vaci:cartaoDeVacina){
-    //        System.out.println("vacina tipo:"+vaci.getTipo()+"de custo R$ "+vaci.getCusto());
-    //    }
-    //}
-
-    public ArrayList<Vacina> getCartaoDeVacina(){
+    public ArrayList<VacinaAplicada> getCartaoDeVacina(){
         return cartaoDeVacina;
     }
 
-    public ArrayList<Vacina> vacinasParaVencerNoMes(Time currentTime){
-        ArrayList<Vacina> vacinasVelhas = new ArrayList<Vacina>();
+    public ArrayList<VacinaAplicada> vacinasParaVencerNoMes(Time currentTime){
+        ArrayList<VacinaAplicada> vacinasVelhas = new ArrayList<VacinaAplicada>();
 
-        for(Vacina vacina: cartaoDeVacina){
+        for(VacinaAplicada vacina: cartaoDeVacina){
             Time vacinaTime = vacina.getDataDeValidade();
             vacinaTime.sub(currentTime);
             Time month = new Time();

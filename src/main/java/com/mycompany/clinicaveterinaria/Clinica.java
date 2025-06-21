@@ -1,16 +1,36 @@
-package com.mycompany.clinicaveterinaria;
-
 import java.util.*;
 import java.time.*;
 import java.lang.reflect.*;
 
-public class Clinica
-{
+public class Clinica {
+    public List<Specialty> specialties = new ArrayList<Specialty>();
+    public List<Vacina> tiposVacinas = new ArrayList<Vacina>();
+
     List<User> users = new ArrayList<User>();
     List<Consulta> consultas= new ArrayList<Consulta>();
     List<Agendamento> agendamentos = new ArrayList<Agendamento>();
 
-    public boolean cpfIsUnique(int cpf){
+    public Specialty getSpecialty(String specialty){
+        for(Specialty spec : specialties){
+            if(specialty == spec.nome){
+                return spec;
+            }
+        }
+
+        return null;
+    }
+
+    public Vacina getVacina(String vacina){
+        for(Vacina vac : tiposVacinas){
+            if(vacina == vac.nome){
+                return vac;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean cpfIsUnique(String cpf){
         for(User user : users){
             if(user.getCpf() == cpf){
                 return false;
@@ -28,7 +48,7 @@ public class Clinica
         return true;
     }
 
-    public User getUser(int cpf){
+    public User getUser(String cpf){
         for(User user : users){
             if(user.cpf == cpf){
                 return user;
@@ -36,33 +56,6 @@ public class Clinica
         }
 
         return null;
-    }
-
-    //Fazer uma versão com deep copy
-    public User getUserCopy(int cpf){
-        User userCopy = null;
-
-        try{
-            userCopy = (User)getUser(cpf).clone();
-        }catch(Exception e){
-            return null;
-        }
-
-        return userCopy;
-    }
-
-    public boolean alterarUser(User user, int cpf){
-        if(user.cpf != cpf)
-            return false;
-
-        if(cpfIsUnique(user.cpf)){
-            return false;
-        }
-
-        //Contando com sobrescrição de método
-        user.changeUser(user);
-
-        return true;
     }
 
     public boolean agendar(String specialty, Time dateAndTime) {
@@ -128,5 +121,35 @@ public class Clinica
         }
 
         return null;
+    }
+
+    public void addSpecialty(String nome, int price){
+        for(Specialty s : specialties)
+            if(s.nome == nome)
+                return;
+
+        specialties.add(new Specialty(nome, price));
+    }
+
+    public void addVacina(String nome, int price){
+        for(Vacina v : tiposVacinas)
+            if(v.nome == nome)
+                return;
+
+        tiposVacinas.add(new Vacina(nome, price));
+    }
+
+    public Clinica(){
+        addSpecialty("Fisioterapeuta", 10);
+        addSpecialty("Oftamologista", 20);
+        addSpecialty("Pediatra", 5);
+        addSpecialty("Otorrinolaringologista", 33);
+        addSpecialty("Cardiologista", 15);
+
+        addVacina("Febre amarela", 15);
+        addVacina("Coronavírus", 5);
+        addVacina("Câncer", 30);
+        addVacina("Gripe", 8);
+        addVacina("AIDS", 3);
     }
 }

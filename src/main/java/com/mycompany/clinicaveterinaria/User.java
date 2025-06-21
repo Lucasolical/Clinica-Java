@@ -1,26 +1,18 @@
-package com.mycompany.clinicaveterinaria;
-
 import java.lang.*;
 
 public abstract class User{
-    String name, email;
-    int cpf, phoneNumber;
+    String name, email, cpf, phoneNumber;
 
     public User(){
     }
 
     public User(String name, String email,
-            int cpf, int phoneNumber)
+            String cpf, String phoneNumber)
     {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException{
-        return super.clone();
     }
 
     public void changeUser(User user){
@@ -32,20 +24,23 @@ public abstract class User{
     public String getEmail() {
         return email;
     }
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setName(String name) {
         this.name = name;
     }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

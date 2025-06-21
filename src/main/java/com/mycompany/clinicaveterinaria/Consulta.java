@@ -1,5 +1,3 @@
-package com.mycompany.clinicaveterinaria;
-
 import java.util.*;
 
 public class Consulta
@@ -18,11 +16,11 @@ public class Consulta
         this.dateAndTime = dateAndTime;
     }
     
-    public void aplicarVacina(Vacina vac){
+    public void aplicarVacina(VacinaAplicada vac){
         animal.incluirVacina(vac);
-        this.custoTotal = this.custoTotal + vac.getCusto();
-    }
-    public void Cobrança(){
-        System.out.println("valor da consulta: R$"+ custoTotal + 300);
+        if(vac.getTipo() == null){
+            return;
+        }
+        this.custoTotal += vac.getTipo().custo;
     }
 }

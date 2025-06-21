@@ -1,15 +1,12 @@
-package com.mycompany.clinicaveterinaria;
-
 import java.util.*;
 
 public class Tutor extends User
 {
-    String name, email, address;
-    int cpf, phoneNumber;  
+    String address;
     List<Animal> animals = new ArrayList<Animal>();
 
     public Tutor(String name, String email, String address, 
-            int phoneNumber, int cpf)
+            String phoneNumber, String cpf)
     {
         super(name, email, cpf, phoneNumber);
         this.address = address;

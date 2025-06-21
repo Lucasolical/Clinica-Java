@@ -1,33 +1,34 @@
-package com.mycompany.clinicaveterinaria;
-
 public class Veterinario extends User
 {
-    String name, email, specialty;
-    int cpf, phoneNumber, cfmv;
+    Specialty specialty;
+    String cfmv;
 
     public Veterinario( String name,
             String email,
-            String specialty,
-            int cpf,
-            int phoneNumber,
-            int cfmv) 
+            Specialty specialty,
+            String cpf,
+            String phoneNumber,
+            String cfmv) 
     {
         super(name, email, cpf, phoneNumber);
         this.specialty = specialty;
         this.cfmv = cfmv;
     }
 
-    public String getSpecialty() {
+    public Specialty getSpecialty() {
         return specialty;
     }
-    public int getCfmv() {
+    public String getCfmv() {
         return cfmv;
     }
 
-    public void setSpecialty(String specialty) {
+    public void setPhone(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
-    public void setCfmv(int cfmv) {
+    public void setCfmv(String cfmv) {
         this.cfmv = cfmv;
     }
 }

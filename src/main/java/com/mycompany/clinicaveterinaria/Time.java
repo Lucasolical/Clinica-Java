@@ -1,5 +1,3 @@
-package com.mycompany.clinicaveterinaria;
-
 public class Time 
 {
     long time;
