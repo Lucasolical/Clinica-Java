@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.util.*;
 
@@ -148,57 +149,141 @@ public class UI extends JFrame{
         String tutorId = "tutor";
         String funcionarioExtraId = "extra";
 
-        JPanel vetPanel = new JPanel();
+        JSplitPane vetPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+        vetPanel.setResizeWeight(0.3); 
+        vetPanel.setDividerSize(0);    
+        vetPanel.setEnabled(false);    
         {
-            JButton sendButton = new JButton("send");
+            JPanel buttonsPanel = new JPanel(new GridLayout(1, 3, 15, 15));
+
             JPanel contentPanel = createForm();
 
-            ArrayList<String> stringList = new ArrayList<String>();
-            for(Specialty s : clinica.specialties){
-                stringList.add(s.nome);
-            }
-            JComboBox specialties = new JComboBox(stringList.toArray());
+            JButton createButton = new JButton("Criar");
+            JButton findButton = new JButton("Buscar");
+            JButton changeButton = new JButton("Alterar");
+            JButton removeButton = new JButton("Remover");
 
-            JTextField nome = new JTextField(15);
-            JTextField email = new JTextField(15);
-            JTextField cpf = new JTextField(15);
-            JTextField phone = new JTextField(15);
-            JTextField cfmv = new JTextField(15);
+            buttonsPanel.add(createButton);
+            buttonsPanel.add(findButton);
+            buttonsPanel.add(changeButton);
 
-            contentPanel.add(formatFormBox(new JLabel("Nome"), nome));
-            contentPanel.add(formatFormBox(new JLabel("Email"), email));
-            contentPanel.add(formatFormBox(new JLabel("Especialidades"), specialties));
-            contentPanel.add(formatFormBox(new JLabel("CPF"), cpf));
-            contentPanel.add(formatFormBox(new JLabel("Número de telefone"), phone));
-            contentPanel.add(formatFormBox(new JLabel("Cfmv"), cfmv));
-
-            sendButton.addActionListener(e -> {
-                Specialty actualSpecialty = null;
+            {
+                ArrayList<String> stringList = new ArrayList<String>();
                 for(Specialty s : clinica.specialties){
-                    if(s.nome == specialties.getSelectedItem()){
-                        actualSpecialty = s;
+                    stringList.add(s.nome);
+                }
+                JComboBox specialties = new JComboBox(stringList.toArray());
+
+                JTextField nome = new JTextField(50);
+                JTextField email = new JTextField(50);
+                JTextField cpf = new JTextField(15);
+                JTextField phone = new JTextField(15);
+                JTextField cfmv = new JTextField(15);
+
+                contentPanel.add(formatFormBox(new JLabel("CPF"), cpf));
+                contentPanel.add(formatFormBox(new JLabel("Nome"), nome));
+                contentPanel.add(formatFormBox(new JLabel("Email"), email));
+                contentPanel.add(formatFormBox(new JLabel("Número de telefone"), phone));
+                contentPanel.add(formatFormBox(new JLabel("Especialidades"), specialties));
+                contentPanel.add(formatFormBox(new JLabel("Cfmv"), cfmv));
+
+                createButton.addActionListener(e -> {
+                    Specialty actualSpecialty = null;
+                    for(Specialty s : clinica.specialties){
+                        if(s.nome == specialties.getSelectedItem()){
+                            actualSpecialty = s;
+                        }
                     }
-                }
 
-                Veterinario newVet = new Veterinario(nome.getText(), 
-                        email.getText(),
-                        actualSpecialty,
-                        cfmv.getText(),
-                        cpf.getText(),
-                        phone.getText());
+                    Veterinario newVet = new Veterinario(nome.getText(), 
+                            email.getText(),
+                            actualSpecialty,
+                            Integer.parseInt(cpf.getText()),
+                            Integer.parseInt(phone.getText()),
+                            Integer.parseInt(cfmv.getText()));
 
-                if(!clinica.signUser(newVet)){
-                    JOptionPane.showMessageDialog(
-                            null,  // parent component; you can use your window/panel instead of null if you want
-                            "Erro ao cadastrar o veterinário. Verifique os dados e tente novamente.",
-                            "Erro de Cadastro",
-                            JOptionPane.ERROR_MESSAGE
-                            );
-                }
-            });
+                    if(!clinica.signUser(newVet)){
+                        JOptionPane.showMessageDialog(
+                                null,  // parent component; you can use your window/panel instead of null if you want
+                                "Erro ao cadastrar o veterinário. Verifique os dados e tente novamente.",
+                                "Erro de Cadastro",
+                                JOptionPane.ERROR_MESSAGE
+                                );
+                    }
+                });
+                findButton.addActionListener(e -> {
+
+                    if(clinica.getUser(Integer.parseInt(cpf.getText())) == null){
+                        JOptionPane.showMessageDialog(
+                                null,  // parent component; you can use your window/panel instead of null if you want
+                                "Erro ao achar o veterinário. Verifique os dados e tente novamente.",
+                                "Erro de Cadastro",
+                                JOptionPane.ERROR_MESSAGE
+                                );
+                    }
+                    Veterinario vet = (Veterinario)clinica.getUser(Integer.parseInt(cpf.getText()));
+                    if(vet == null){
+                        JOptionPane.showMessageDialog(
+                                null,  // parent component; you can use your window/panel instead of null if you want
+                                "Erro ao achar o veterinário. Verifique os dados e tente novamente.",
+                                "Erro de Cadastro",
+                                JOptionPane.ERROR_MESSAGE
+                                );
+                        return;
+                    }
+                    email.setText(vet.email);
+                    cfmv.setText(Integer.toString(vet.cfmv));
+                    cpf.setText(Integer.toString(vet.cpf));
+                    phone.setText(Integer.toString(vet.phoneNumber));
+                    nome.setText(vet.name);
+                    specialties.setSelectedItem(vet.specialty.nome);
+                });
+                changeButton.addActionListener(e -> {
+                    Veterinario vet = (Veterinario)clinica.getUser(Integer.parseInt(cpf.getText()));
+                    if(vet == null){
+                        JOptionPane.showMessageDialog(
+                                null,  // parent component; you can use your window/panel instead of null if you want
+                                "Erro ao achar o veterinário. Verifique os dados e tente novamente.",
+                                "Erro de Cadastro",
+                                JOptionPane.ERROR_MESSAGE
+                                );
+                        return;
+                    }
+                    vet.setName(nome.getText());
+                    vet.setEmail(email.getText());
+                    vet.setCfmv(Integer.parseInt(cfmv.getText()));
+                    vet.setCpf(Integer.parseInt(cpf.getText()));
+                    vet.setPhone(Integer.parseInt(phone.getText()));
+                    vet.setSpecialty(clinica.getSpecialty(specialties.getSelectedItem().toString()));
+                });
+                removeButton.addActionListener(e -> {
+                    Specialty actualSpecialty = null;
+                    for(Specialty s : clinica.specialties){
+                        if(s.nome == specialties.getSelectedItem()){
+                            actualSpecialty = s;
+                        }
+                    }
+
+                    Veterinario newVet = new Veterinario(nome.getText(), 
+                            email.getText(),
+                            actualSpecialty,
+                            Integer.parseInt(cpf.getText()),
+                            Integer.parseInt(phone.getText()),
+                            Integer.parseInt(cfmv.getText()));
+
+                    if(!clinica.signUser(newVet)){
+                        JOptionPane.showMessageDialog(
+                                null,  // parent component; you can use your window/panel instead of null if you want
+                                "Erro ao cadastrar o veterinário. Verifique os dados e tente novamente.",
+                                "Erro de Cadastro",
+                                JOptionPane.ERROR_MESSAGE
+                                );
+                    }
+                });
+            }
 
             vetPanel.add(contentPanel);
-            vetPanel.add(sendButton);
+            vetPanel.add(buttonsPanel);
         }
 
         JPanel funcionarioExtraPanel = new JPanel();
@@ -265,9 +350,21 @@ public class UI extends JFrame{
         mainPanel.add(optionPanel);
         mainPanel.add(switchPanel);
 
-        cardLayout.show(switchPanel, " ");
+        cardLayout.show(switchPanel, vetId);
 
         return addAppLayout(mainPanel, "Inserir cadastro");
+    }
+
+    JPanel agendamento(){
+        return new JPanel();
+    }
+
+    JPanel consulta(){
+        return new JPanel();
+    }
+
+    JPanel vacina(){
+        return new JPanel();
     }
 
     JPanel telaEmitirCartao(){
@@ -292,14 +389,13 @@ public class UI extends JFrame{
         setLocationRelativeTo(null); // Center window
 
         mainPanel.add(createBasicPanel("Clinica", cadastroId, agendamentoId, consultaId, vacinaId, emitirCartaoId, emitirCobrancaId, emitirProntuarioId), homeId);
-        mainPanel.add(createBasicPanel("Cadastro", inserirCadastroId, alterarCadastroId, removerCadastroId, consultarCadastroId), cadastroId);
-        mainPanel.add(createBasicPanel("Agendamento", inserirAgendamentoId, cancelarAgendamentoId), agendamentoId);
-        mainPanel.add(createBasicPanel("Consulta", inserirConsultaId, consultarConsultaId), consultaId);
-        mainPanel.add(createBasicPanel("Vacina", incluirVacinaId, consultarVacinaId), vacinaId);
+        mainPanel.add(inserirCadastro(), cadastroId);
+        mainPanel.add(agendamento(), agendamentoId);
+        mainPanel.add(consulta(), consultaId);
+        mainPanel.add(vacina(), vacinaId);
         mainPanel.add(telaEmitirCartao(), emitirCartaoId);
         mainPanel.add(telaEmitirCobrança(), emitirCobrancaId);
         mainPanel.add(telaEmitirProntuario(), emitirProntuarioId);
-        mainPanel.add(inserirCadastro(), inserirCadastroId);
 
         cardLayout.show(mainPanel, homeId);
 

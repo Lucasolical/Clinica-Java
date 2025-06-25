@@ -30,7 +30,7 @@ public class Clinica {
         return null;
     }
 
-    public boolean cpfIsUnique(String cpf){
+    public boolean cpfIsUnique(int cpf){
         for(User user : users){
             if(user.getCpf() == cpf){
                 return false;
@@ -48,7 +48,7 @@ public class Clinica {
         return true;
     }
 
-    public User getUser(String cpf){
+    public User getUser(int cpf){
         for(User user : users){
             if(user.cpf == cpf){
                 return user;

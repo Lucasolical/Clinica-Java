@@ -6,7 +6,7 @@ public class Tutor extends User
     List<Animal> animals = new ArrayList<Animal>();
 
     public Tutor(String name, String email, String address, 
-            String phoneNumber, String cpf)
+            int phoneNumber, int cpf)
     {
         super(name, email, cpf, phoneNumber);
         this.address = address;

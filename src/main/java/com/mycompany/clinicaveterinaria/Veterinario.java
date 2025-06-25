@@ -1,14 +1,14 @@
 public class Veterinario extends User
 {
     Specialty specialty;
-    String cfmv;
+    int cfmv;
 
     public Veterinario( String name,
             String email,
             Specialty specialty,
-            String cpf,
-            String phoneNumber,
-            String cfmv) 
+            int cpf,
+            int phoneNumber,
+            int cfmv) 
     {
         super(name, email, cpf, phoneNumber);
         this.specialty = specialty;
@@ -18,17 +18,17 @@ public class Veterinario extends User
     public Specialty getSpecialty() {
         return specialty;
     }
-    public String getCfmv() {
+    public int getCfmv() {
         return cfmv;
     }
 
-    public void setPhone(String phoneNumber) {
+    public void setPhone(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
-    public void setCfmv(String cfmv) {
+    public void setCfmv(int cfmv) {
         this.cfmv = cfmv;
     }
 }
