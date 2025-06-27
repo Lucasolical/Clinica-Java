@@ -1,3 +1,5 @@
+package com.mycompany.clinicaveterinaria;
+
 public class Vacina{
     public String nome;
     public int custo;

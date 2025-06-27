@@ -1,3 +1,4 @@
+package com.mycompany.clinicaveterinaria;
 public class Veterinario extends User
 {
     Specialty specialty;
