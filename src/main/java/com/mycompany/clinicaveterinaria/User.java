@@ -1,3 +1,5 @@
+package com.mycompany.clinicaveterinaria;
+
 import java.lang.*;
 
 public abstract class User{

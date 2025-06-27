@@ -1,3 +1,5 @@
+package com.mycompany.clinicaveterinaria;
+
 public class Specialty{
     public String nome;
     public float custo;

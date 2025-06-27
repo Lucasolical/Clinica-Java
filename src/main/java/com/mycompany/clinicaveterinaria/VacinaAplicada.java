@@ -1,3 +1,5 @@
+package com.mycompany.clinicaveterinaria;
+
 public class VacinaAplicada 
 {
     Vacina tipo;

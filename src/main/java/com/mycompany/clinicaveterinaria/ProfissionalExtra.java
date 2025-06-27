@@ -1,3 +1,5 @@
+package com.mycompany.clinicaveterinaria;
+
 public class ProfissionalExtra extends User
 {
     String turno;
