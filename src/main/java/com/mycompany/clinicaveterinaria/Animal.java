@@ -16,6 +16,13 @@ public class Animal
         this.birthDate = birthDate;
         this.tutor = tutor;
     }
+
+    public Animal(String name, String race, Time birthDate){
+        this.name = name;
+        this.race = race;
+        this.birthDate = birthDate;
+    }
+
     public void incluirVacina(VacinaAplicada vac){
         cartaoDeVacina.add(vac);
     }

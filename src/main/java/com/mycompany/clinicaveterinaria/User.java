@@ -4,13 +4,13 @@ import java.lang.*;
 
 public abstract class User{
     String name, email;
-    int cpf, phoneNumber;
+    long cpf, phoneNumber;
 
     public User(){
     }
 
     public User(String name, String email,
-            int cpf, int phoneNumber)
+            long cpf, long phoneNumber)
     {
         this.name = name;
         this.email = email;
@@ -27,23 +27,23 @@ public abstract class User{
     public String getEmail() {
         return email;
     }
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

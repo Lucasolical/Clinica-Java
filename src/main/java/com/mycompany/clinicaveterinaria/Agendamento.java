@@ -2,10 +2,10 @@ package com.mycompany.clinicaveterinaria;
 
 public class Agendamento{
     Time dateAndTime;
-    String specialty;
+    Specialty specialty;
     Animal animal;
 
-    public Agendamento(String specialty, Time dateAndTime, Animal animal){
+    public Agendamento(Specialty specialty, Time dateAndTime, Animal animal){
         this.specialty = specialty;
         this.dateAndTime = dateAndTime;
         this.animal = animal;
@@ -14,14 +14,14 @@ public class Agendamento{
     public Time getDateAndTime(){
         return dateAndTime;
     }
-    public String getSpecialty(){
+    public Specialty getSpecialty(){
         return specialty;
     }
 
     public void setDateAndTime(Time dateAndTime){
         this.dateAndTime = dateAndTime;
     }
-    public void setSpecialty(String specialty){
+    public void setSpecialty(Specialty specialty){
         this.specialty = specialty;
     }
 }

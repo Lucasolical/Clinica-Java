@@ -3,14 +3,14 @@ package com.mycompany.clinicaveterinaria;
 public class Veterinario extends User
 {
     Specialty specialty;
-    int cfmv;
+    String cfmv;
 
     public Veterinario( String name,
             String email,
             Specialty specialty,
-            int cpf,
-            int phoneNumber,
-            int cfmv) 
+            long cpf,
+            long phoneNumber,
+            String cfmv) 
     {
         super(name, email, cpf, phoneNumber);
         this.specialty = specialty;
@@ -20,7 +20,7 @@ public class Veterinario extends User
     public Specialty getSpecialty() {
         return specialty;
     }
-    public int getCfmv() {
+    public String getCfmv() {
         return cfmv;
     }
 
@@ -30,7 +30,7 @@ public class Veterinario extends User
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
-    public void setCfmv(int cfmv) {
+    public void setCfmv(String cfmv) {
         this.cfmv = cfmv;
     }
 }
