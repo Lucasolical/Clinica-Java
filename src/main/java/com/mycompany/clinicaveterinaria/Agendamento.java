@@ -3,10 +3,12 @@ package com.mycompany.clinicaveterinaria;
 public class Agendamento{
     Time dateAndTime;
     String specialty;
+    Animal animal;
 
-    public Agendamento(String specialty, Time dateAndTime){
+    public Agendamento(String specialty, Time dateAndTime, Animal animal){
         this.specialty = specialty;
         this.dateAndTime = dateAndTime;
+        this.animal = animal;
     }
 
     public Time getDateAndTime(){
