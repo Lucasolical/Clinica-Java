@@ -5,7 +5,7 @@ public class ProfissionalExtra extends User
     String turno;
 
     public ProfissionalExtra(String name, String email, String turno,
-            int cpf, int phoneNumber)
+            long cpf, long phoneNumber)
     {
         super(name, email, cpf, phoneNumber);
         this.turno = turno;

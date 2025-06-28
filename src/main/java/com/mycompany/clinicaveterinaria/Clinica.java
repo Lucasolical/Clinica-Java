@@ -5,6 +5,8 @@ import java.time.*;
 import java.lang.reflect.*;
 
 public class Clinica {
+    Time currentTime = new Time(2025, 5, 4, 0, 0);
+
     public List<Specialty> specialties = new ArrayList<Specialty>();
     public List<Vacina> tiposVacinas = new ArrayList<Vacina>();
 
@@ -32,7 +34,7 @@ public class Clinica {
         return null;
     }
 
-    public boolean cpfIsUnique(int cpf){
+    public boolean cpfIsUnique(long cpf){
         for(User user : users){
             if(user.getCpf() == cpf){
                 return false;
@@ -60,15 +62,21 @@ public class Clinica {
         return null;
     }
 
-    public boolean agendar(String specialty, Time dateAndTime, Animal animal) {
+    public boolean agendar(Specialty specialty, Time dateAndTime, Animal animal) {
+        if(dateAndTime.time < currentTime.time){
+            System.out.println("Data inválida.");
+            return false;
+        }
         if(dateAndTime.getMinute()%20 != 0 ||
-            !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12) ||
-            !(dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
+            !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12 ||
+            dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
         {
+            System.out.println("Hora inválida.");
             return false;
         }
 
-        if(getAgendamento(dateAndTime) != null){
+        if(!freeTime(dateAndTime)){
+            System.out.println("Horário ocupado.");
             return false;
         }
 
@@ -133,6 +141,49 @@ public class Clinica {
         specialties.add(new Specialty(nome, price));
     }
 
+    boolean freeTime(Time time){
+        for(Agendamento a : agendamentos){
+            if(a.getDateAndTime().cmp(time) == 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    //A parte das horas vão ser ignoradas
+    List<Time> getFreeTimes(Time time){
+        time.setHour(0);
+        time.setMinute(0);
+        List<Time> allTimes = new ArrayList<Time>();
+        Time firstBreak = new Time(time);
+        firstBreak.setHour(12);
+        Time curTime = new Time(time);
+        for(curTime.setHour(8);
+                curTime.time < firstBreak.time;
+                curTime.addMinutes(20))
+        {
+            if(freeTime(curTime)){
+                allTimes.add(new Time(curTime));
+            }
+        }
+        time.setMinute(0);
+
+        Time secondBreak = new Time(time);
+        secondBreak.setHour(18);
+        for(curTime.setHour(14);
+            curTime.time  < firstBreak.time;
+            curTime.addMinutes(20))
+        {
+            if(freeTime(curTime)){
+                allTimes.add(new Time(curTime));
+            }
+        }
+
+
+        return allTimes;
+    }
+
     public void addVacina(String nome, int price){
         for(Vacina v : tiposVacinas)
             if(v.nome == nome)
@@ -153,5 +204,89 @@ public class Clinica {
         addVacina("Câncer", 30);
         addVacina("Gripe", 8);
         addVacina("AIDS", 3);
+
+        List<Veterinario> veterinarios = new ArrayList<Veterinario>();
+        veterinarios.add(new Veterinario("Lucas", "lucas@gmail.com",
+                    getSpecialty("Fisioterapeuta"), 74040099301L,
+                    71903574839L, "SP-12345"));
+        veterinarios.add(new Veterinario("Mariana", "MarianaSouza@gmail.com",
+                    getSpecialty("Oftamologista"), 84012345678L,
+                    71999998888L, "RJ-54321"));
+        veterinarios.add(new Veterinario("Carlos", "CarlosVet@hotmail.com",
+                    getSpecialty("Pediatra"), 65098765432L,
+                    71912345678L, "MG-11223"));
+        veterinarios.add(new Veterinario("Fernanda", "FernandaClinica@vet.com",
+                    getSpecialty("Otorrinolaringologista"), 52087654321L,
+                    71987654321L, "BA-33445"));
+        veterinarios.add(new Veterinario("André", "AndreTeixeira@gmail.com",
+                    getSpecialty("Cardiologista"), 71019283746L,
+                    71965432109L, "RS-55667"));
+        veterinarios.add(new Veterinario("Juliana", "JulianaLima@veterinaria.com",
+                    getSpecialty("Fisioterapeuta"), 39056473829L,
+                    71932109876L, "PR-77889"));
+        veterinarios.add(new Veterinario("Ricardo", "RicardoVet@clinvet.com",
+                    getSpecialty("Oftamologista"), 88013579246L,
+                    71911223344L, "PE-99001"));
+
+        for(Veterinario t : veterinarios){
+            signUser(t);
+        }
+
+       List<ProfissionalExtra> profissionaisExtras = new ArrayList<ProfissionalExtra>(); 
+
+       profissionaisExtras.add(new ProfissionalExtra("Ana Paula", "AnaPaula@gmail.com", "Manhã", 
+                   12345678901L, 71987654321L));
+       profissionaisExtras.add(new ProfissionalExtra("Bruno Silva", "BrunoSilva@hotmail.com", "Tarde", 
+                   23456789012L, 71912345678L));
+       profissionaisExtras.add(new ProfissionalExtra("Carla Mendes", "CarlaMendes@outlook.com", "Noite", 
+                   34567890123L, 71923456789L));
+       profissionaisExtras.add(new ProfissionalExtra("Diego Rocha", "DiegoRocha@gmail.com", "Manhã", 
+                   45678901234L, 71934567890L));
+       profissionaisExtras.add(new ProfissionalExtra("Elisa Costa", "ElisaCosta@yahoo.com", "Tarde", 
+                   56789012345L, 71945678901L));
+       profissionaisExtras.add(new ProfissionalExtra("Felipe Nunes", "FelipeNunes@terra.com", "Noite", 
+                   67890123456L, 71956789012L));
+
+
+       List<Tutor> tutores = new ArrayList<Tutor>();
+       tutores.add(new Tutor("marcos", "marcos@gmal.com", 
+                   "São paulo", 71994404034L, 7040181870L));
+       tutores.add(new Tutor("antônio", "antonio@gmal.com", 
+                   "Rio de janeiro - copacabana", 71894214334L, 7941181270L));
+       tutores.add(new Tutor("Julia", "julia@gmal.com", 
+                   "Juazeiro - BA", 64294212334L, 92184302312L));
+
+       for(Tutor t : tutores){
+           signUser(t);
+       } 
+       tutores.get(0).addAnimal(new Animal("rex", "puddle", new Time(2004, 4, 7, 8, 40)));
+       tutores.get(0).addAnimal(new Animal("lola", "puddle", 
+                   new Time(2004, 4, 7, 8, 40)));
+       tutores.get(0).addAnimal(new Animal("bingus", "sphynx", 
+                   new Time(208, 4, 7, 8, 40)));
+
+       tutores.get(1).addAnimal(new Animal("mel", "labrador",
+                   new Time(2016, 11, 12, 9, 15)));
+       tutores.get(1).addAnimal(new Animal("toby", "bulldog francês",
+                   new Time(2018, 6, 3, 10, 30)));
+       tutores.get(1).addAnimal(new Animal("mimi", "persa",
+                   new Time(2020, 2, 21, 14, 45)));
+       tutores.get(1).addAnimal(new Animal("bella", "golden retriever",
+                   new Time(2021, 3, 14, 16, 25)));
+
+       tutores.get(2).addAnimal(new Animal("nina", "beagle",
+                   new Time(2017, 9, 29, 11, 0)));
+       tutores.get(2).addAnimal(new Animal("luke", "gato siamês",
+                   new Time(2019, 7, 8, 13, 10)));
+
+       if(!agendar(getSpecialty("Oftamologista"), new Time(2026, 4, 3, 8, 20), tutores.get(0).animals.get(0))){ System.out.println("didn't worked"); }
+       if(!agendar(getSpecialty("Pediatra"), new Time(2026, 4, 3, 8, 40), tutores.get(0).animals.get(1))){ System.out.println("Didn't worked"); }
+       if(!agendar(getSpecialty("Fisioterapeuta"), new Time(2026, 4, 3, 9, 0), tutores.get(0).animals.get(2))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Fisioterapeuta"), new Time(2026, 4, 4, 9, 20), tutores.get(1).animals.get(0))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Otorrinolaringologista"), new Time(2026, 4, 4, 9, 40), tutores.get(1).animals.get(1))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Cardiologista"), new Time(2026, 4, 4, 10, 0), tutores.get(1).animals.get(2))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Cardiologista"), new Time(2026, 4, 4, 10, 20), tutores.get(1).animals.get(3))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Pediatra"), new Time(2026, 4, 5, 10, 40), tutores.get(2).animals.get(0))){System.out.println("Didn't worked");}
+       if(!agendar(getSpecialty("Otorrinolaringologista"), new Time(2026, 4, 5, 11, 0), tutores.get(2).animals.get(1))){System.out.println("Didn't worked");}
     }
 }

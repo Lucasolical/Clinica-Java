@@ -2,11 +2,26 @@ package com.mycompany.clinicaveterinaria;
 
 public class Time 
 {
-    long time;
+    public long time = 0;
     final long hour = 60;
     final long day = 24 * hour;
     final long month = 30 * day;
     final long year = 365 * day;
+
+    public Time(){
+    }
+
+    public Time(int year, int month, int day, int hour, int minutes){
+        setYear(year);
+        setMonth(month);
+        setDay(day);
+        setHour(hour);
+        setMinute(minutes);
+    }
+
+    public Time(Time time){
+        this.time = time.time;
+    }
 
     public int cmp(Time time){
         if(this.time > time.getTime()){
@@ -35,10 +50,31 @@ public class Time
         this.time = result;
     }
 
-    public void addYears(int years){
-        if(time + years * year < 0)
+    public void addYears(long years){
+        years *= year;
+        if(time + years < 0)
             return;
-        time += years * year;
+        time += years;
+    }
+
+    public void addMonths(long months){
+        months *= month;
+        if(time + months < 0)
+            return;
+        time += months;
+    }
+
+    public void addDays(long days){
+        days *= day;
+        if(time + days < 0)
+            return;
+        time += days;
+    }
+
+    public void addMinutes(long minutes){
+        if(time + minutes < 0)
+            return;
+        time += minutes;
     }
 
     public long getTime(){
@@ -66,29 +102,32 @@ public class Time
         time -= getYear() * this.year;
         time += year * this.year;
     }
-    public void setMonth(byte month) {
+    public void setMonth(int month) {
         if(month < 0)
             return;
         time -= getMonth() * this.month;
         time += month* this.month;
     }
-    public void setDay(byte day){
+    public void setDay(int day){
         if(day < 0)
             return;
         time -= getDay() * this.day;
         time += day * this.day;
     }
-    public void setHour(byte hour) {
+    public void setHour(int hour) {
         if(hour < 0)
             return;
         time -= getHour() * this.hour;
         time += hour * this.hour;
     }
-    public void setMinute(byte minute) {
+    public void setMinute(int minute) {
         if(minute < 0)
             return;
         time -= getMinute();
         time += minute;
+    }
+    public void print(){
+        System.out.println(getYear() + "/" + getMonth() + "/" + getDay() + " " + getHour() + ":" + getMinute());
     }
 
     @Override

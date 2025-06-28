@@ -8,10 +8,19 @@ public class Tutor extends User
     List<Animal> animals = new ArrayList<Animal>();
 
     public Tutor(String name, String email, String address, 
-            int phoneNumber, int cpf)
+            long phoneNumber, long cpf)
     {
         super(name, email, cpf, phoneNumber);
         this.address = address;
+    }
+
+    public void addAnimal(Animal animal){
+        animal.tutor = this;
+        animals.add(animal);
+    }
+
+    public void removeAnimal(Animal animal){
+        animals.remove(animal);
     }
 
     String getAddress(){
