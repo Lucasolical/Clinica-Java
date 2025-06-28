@@ -5,7 +5,7 @@
 *.ear
 
 # Diretórios do Maven
-/target/
+target/
 
 # Diretórios do NetBeans
 /nbproject/private/
