@@ -133,6 +133,49 @@ public class Clinica {
         specialties.add(new Specialty(nome, price));
     }
 
+    boolean freeTime(Time time){
+        for(Agendamento a : agendamentos){
+            if(a.getDateAndTime().cmp(time) == 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    //A parte das horas vão ser ignoradas
+    List<Time> getFreeTimes(Time time){
+        time.setHour(0);
+        time.setMinute(0);
+        List<Time> allTimes = new ArrayList<Time>();
+        Time firstBreak = new Time(time);
+        firstBreak.setHour(12);
+        Time curTime = new Time(time);
+        for(curTime.setHour(8);
+                curTime.time < firstBreak.time;
+                curTime.addMinutes(20))
+        {
+            if(freeTime(curTime)){
+                allTimes.add(new Time(curTime));
+            }
+        }
+        time.setMinute(0);
+
+        Time secondBreak = new Time(time);
+        secondBreak.setHour(18);
+        for(curTime.setHour(14);
+            curTime.time  < firstBreak.time;
+            curTime.addMinutes(20))
+        {
+            if(freeTime(curTime)){
+                allTimes.add(new Time(curTime));
+            }
+        }
+
+
+        return allTimes;
+    }
+
     public void addVacina(String nome, int price){
         for(Vacina v : tiposVacinas)
             if(v.nome == nome)
