@@ -60,7 +60,7 @@ public class Clinica {
         return null;
     }
 
-    public boolean agendar(String specialty, Time dateAndTime) {
+    public boolean agendar(String specialty, Time dateAndTime, Animal animal) {
         if(dateAndTime.getMinute()%20 != 0 ||
             !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12) ||
             !(dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
@@ -72,7 +72,7 @@ public class Clinica {
             return false;
         }
 
-        Agendamento consulta = new Agendamento(specialty, dateAndTime);
+        Agendamento consulta = new Agendamento(specialty, dateAndTime, animal);
 
         agendamentos.add(consulta);
 
