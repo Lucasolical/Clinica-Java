@@ -1,0 +1,36 @@
+# Compilação
+*.class
+*.jar
+*.war
+*.ear
+
+# Diretórios do Maven
+/target/
+
+# Diretórios do NetBeans
+/nbproject/private/
+/build/
+/dist/
+
+# Arquivos de cache do NetBeans
+*.orig
+*.rej
+*.bak
+*~ 
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Configurações específicas do NetBeans (opcional manter)
+**/nbproject/genfiles.properties
+**/nbproject/project.properties
+**/nbproject/project.xml
+
+# IntelliJ (caso algum dev use)
+.idea/
+*.iml
+
+# VS Code
+.vscode/
