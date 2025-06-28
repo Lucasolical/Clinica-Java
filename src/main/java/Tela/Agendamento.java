@@ -10,6 +10,8 @@ package Tela;
  */
 public class Agendamento extends javax.swing.JFrame {
     Menu menuJ;
+    Agendar consultaJ;
+    CancelarAgendamento cancelarJ;
     /**
      * Creates new form Agendamento
      */
@@ -26,17 +28,17 @@ public class Agendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        AgendarCB = new javax.swing.JToggleButton();
         VoltarM = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        CandelarAB = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setText("Agendar Consulta");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        AgendarCB.setText("Agendar Consulta");
+        AgendarCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                AgendarCBActionPerformed(evt);
             }
         });
 
@@ -50,10 +52,10 @@ public class Agendamento extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Agendamento");
 
-        jToggleButton3.setText("Cancelar Agendamento");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        CandelarAB.setText("Cancelar Agendamento");
+        CandelarAB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                CandelarABActionPerformed(evt);
             }
         });
 
@@ -65,8 +67,8 @@ public class Agendamento extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(VoltarM, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CandelarAB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AgendarCB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(8, 8, 8)))
@@ -78,9 +80,9 @@ public class Agendamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AgendarCB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CandelarAB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(VoltarM, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
@@ -89,9 +91,12 @@ public class Agendamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void AgendarCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarCBActionPerformed
+        consultaJ = new Agendar();
+        consultaJ.setVisible(true);
+        this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_AgendarCBActionPerformed
 
     private void VoltarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarMActionPerformed
         menuJ = new Menu(); 
@@ -99,9 +104,11 @@ public class Agendamento extends javax.swing.JFrame {
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_VoltarMActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    private void CandelarABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandelarABActionPerformed
+        cancelarJ = new CancelarAgendamento();  
+        cancelarJ.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_CandelarABActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,9 +146,9 @@ public class Agendamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton AgendarCB;
+    private javax.swing.JToggleButton CandelarAB;
     private javax.swing.JToggleButton VoltarM;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }
