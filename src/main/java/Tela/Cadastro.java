@@ -9,7 +9,11 @@ package Tela;
  * @author Lucas
  */
 public class Cadastro extends javax.swing.JFrame {
-
+        //variaveis para entrar nas respectivas janelas
+        CadastroVet veterinarioC;
+        CadastroFuncionario funcionarioC;
+        CadastroTutor tutorC;
+        Menu menuJ;
     /**
      * Creates new form Cadastro
      */
@@ -26,31 +30,38 @@ public class Cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        FuncionarioB = new javax.swing.JToggleButton();
+        VeterinarioB = new javax.swing.JToggleButton();
+        TutorB = new javax.swing.JToggleButton();
+        VoltarCad = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setText("Funcionarios");
-        jToggleButton1.setActionCommand("Funcionarios");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        FuncionarioB.setText("Funcionarios");
+        FuncionarioB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                FuncionarioBActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Veterinario");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        VeterinarioB.setText("Veterinario");
+        VeterinarioB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                VeterinarioBActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setText("Tutor");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        TutorB.setText("Tutor");
+        TutorB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                TutorBActionPerformed(evt);
+            }
+        });
+
+        VoltarCad.setText("Voltar");
+        VoltarCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarCadActionPerformed(evt);
             }
         });
 
@@ -58,45 +69,59 @@ public class Cadastro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jToggleButton2)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addComponent(jToggleButton3)
-                            .addGap(162, 162, 162)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap(138, Short.MAX_VALUE)
+                        .addComponent(VeterinarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(VoltarCad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FuncionarioB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(TutorB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(137, 137, 137))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jToggleButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton3)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(VeterinarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TutorB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VoltarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
+        funcionarioC = new CadastroFuncionario(); 
+        funcionarioC.setVisible(true);
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_FuncionarioBActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void VeterinarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeterinarioBActionPerformed
+        veterinarioC = new CadastroVet(); 
+        veterinarioC.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_VeterinarioBActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    private void TutorBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorBActionPerformed
+        tutorC = new CadastroTutor(); 
+        tutorC.setVisible(true);
+        this.dispose();  // TODO add your handling code here:
+    }//GEN-LAST:event_TutorBActionPerformed
+
+    private void VoltarCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCadActionPerformed
+        menuJ = new Menu(); 
+        menuJ.setVisible(true);
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_VoltarCadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,8 +159,9 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton FuncionarioB;
+    private javax.swing.JToggleButton TutorB;
+    private javax.swing.JToggleButton VeterinarioB;
+    private javax.swing.JToggleButton VoltarCad;
     // End of variables declaration//GEN-END:variables
 }
