@@ -40,6 +40,7 @@ public class Clinica {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -54,7 +55,7 @@ public class Clinica {
 
     public User getUser(String cpf){
         for(User user : users){
-            if(user.cpf == cpf){
+            if(user.cpf.equals(cpf)){
                 return user;
             }
         }
