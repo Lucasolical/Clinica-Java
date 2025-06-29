@@ -8,8 +8,8 @@ public class Veterinario extends User
     public Veterinario( String name,
             String email,
             Specialty specialty,
-            long cpf,
-            long phoneNumber,
+            String cpf,
+            String phoneNumber,
             String cfmv) 
     {
         super(name, email, cpf, phoneNumber);
@@ -24,7 +24,7 @@ public class Veterinario extends User
         return cfmv;
     }
 
-    public void setPhone(int phoneNumber) {
+    public void setPhone(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public void setSpecialty(Specialty specialty) {

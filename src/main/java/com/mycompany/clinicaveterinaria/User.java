@@ -3,14 +3,13 @@ package com.mycompany.clinicaveterinaria;
 import java.lang.*;
 
 public abstract class User{
-    String name, email;
-    long cpf, phoneNumber;
+    String name, email, cpf, phoneNumber;
 
     public User(){
     }
 
     public User(String name, String email,
-            long cpf, long phoneNumber)
+            String cpf, String phoneNumber)
     {
         this.name = name;
         this.email = email;
@@ -27,23 +26,23 @@ public abstract class User{
     public String getEmail() {
         return email;
     }
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

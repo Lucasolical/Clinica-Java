@@ -26,7 +26,7 @@ public class Clinica {
 
     public Vacina getVacina(String vacina){
         for(Vacina vac : tiposVacinas){
-            if(vacina == vac.nome){
+            if(vacina.equals(vac.nome)){
                 return vac;
             }
         }
@@ -34,9 +34,9 @@ public class Clinica {
         return null;
     }
 
-    public boolean cpfIsUnique(long cpf){
+    public boolean cpfIsUnique(String cpf){
         for(User user : users){
-            if(user.getCpf() == cpf){
+            if(user.getCpf().equals(cpf)){
                 return false;
             }
         }
@@ -52,7 +52,7 @@ public class Clinica {
         return true;
     }
 
-    public User getUser(int cpf){
+    public User getUser(String cpf){
         for(User user : users){
             if(user.cpf == cpf){
                 return user;
@@ -207,26 +207,26 @@ public class Clinica {
 
         List<Veterinario> veterinarios = new ArrayList<Veterinario>();
         veterinarios.add(new Veterinario("Lucas", "lucas@gmail.com",
-                    getSpecialty("Fisioterapeuta"), 74040099301L,
-                    71903574839L, "SP-12345"));
+                    getSpecialty("Fisioterapeuta"), "74040099301",
+                    "71903574839", "SP-12345"));
         veterinarios.add(new Veterinario("Mariana", "MarianaSouza@gmail.com",
-                    getSpecialty("Oftamologista"), 84012345678L,
-                    71999998888L, "RJ-54321"));
+                    getSpecialty("Oftamologista"), "84012345678",
+                    "71999998888", "RJ-54321"));
         veterinarios.add(new Veterinario("Carlos", "CarlosVet@hotmail.com",
-                    getSpecialty("Pediatra"), 65098765432L,
-                    71912345678L, "MG-11223"));
+                    getSpecialty("Pediatra"), "65098765432",
+                    "71912345678", "MG-11223"));
         veterinarios.add(new Veterinario("Fernanda", "FernandaClinica@vet.com",
-                    getSpecialty("Otorrinolaringologista"), 52087654321L,
-                    71987654321L, "BA-33445"));
+                    getSpecialty("Otorrinolaringologista"), "52087654321",
+                    "71987654321", "BA-33445"));
         veterinarios.add(new Veterinario("André", "AndreTeixeira@gmail.com",
-                    getSpecialty("Cardiologista"), 71019283746L,
-                    71965432109L, "RS-55667"));
+                    getSpecialty("Cardiologista"), "71019283746",
+                    "71965432109", "RS-55667"));
         veterinarios.add(new Veterinario("Juliana", "JulianaLima@veterinaria.com",
-                    getSpecialty("Fisioterapeuta"), 39056473829L,
-                    71932109876L, "PR-77889"));
+                    getSpecialty("Fisioterapeuta"), "39056473829",
+                    "71932109876", "PR-77889"));
         veterinarios.add(new Veterinario("Ricardo", "RicardoVet@clinvet.com",
-                    getSpecialty("Oftamologista"), 88013579246L,
-                    71911223344L, "PE-99001"));
+                    getSpecialty("Oftamologista"), "88013579246",
+                    "71911223344", "PE-99001"));
 
         for(Veterinario t : veterinarios){
             signUser(t);
@@ -235,26 +235,26 @@ public class Clinica {
        List<ProfissionalExtra> profissionaisExtras = new ArrayList<ProfissionalExtra>(); 
 
        profissionaisExtras.add(new ProfissionalExtra("Ana Paula", "AnaPaula@gmail.com", "Manhã", 
-                   12345678901L, 71987654321L));
+                   "12345678901", "71987654321"));
        profissionaisExtras.add(new ProfissionalExtra("Bruno Silva", "BrunoSilva@hotmail.com", "Tarde", 
-                   23456789012L, 71912345678L));
+                   "23456789012", "71912345678"));
        profissionaisExtras.add(new ProfissionalExtra("Carla Mendes", "CarlaMendes@outlook.com", "Noite", 
-                   34567890123L, 71923456789L));
+                   "34567890123", "71923456789"));
        profissionaisExtras.add(new ProfissionalExtra("Diego Rocha", "DiegoRocha@gmail.com", "Manhã", 
-                   45678901234L, 71934567890L));
+                   "45678901234", "71934567890"));
        profissionaisExtras.add(new ProfissionalExtra("Elisa Costa", "ElisaCosta@yahoo.com", "Tarde", 
-                   56789012345L, 71945678901L));
+                   "56789012345", "71945678901"));
        profissionaisExtras.add(new ProfissionalExtra("Felipe Nunes", "FelipeNunes@terra.com", "Noite", 
-                   67890123456L, 71956789012L));
+                   "67890123456", "71956789012"));
 
 
        List<Tutor> tutores = new ArrayList<Tutor>();
        tutores.add(new Tutor("marcos", "marcos@gmal.com", 
-                   "São paulo", 71994404034L, 7040181870L));
+                   "São paulo", "71994404034", "7040181870"));
        tutores.add(new Tutor("antônio", "antonio@gmal.com", 
-                   "Rio de janeiro - copacabana", 71894214334L, 7941181270L));
+                   "Rio de janeiro - copacabana", "71894214334", "7941181270"));
        tutores.add(new Tutor("Julia", "julia@gmal.com", 
-                   "Juazeiro - BA", 64294212334L, 92184302312L));
+                   "Juazeiro - BA", "64294212334", "92184302312"));
 
        for(Tutor t : tutores){
            signUser(t);
