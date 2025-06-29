@@ -72,7 +72,7 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="AgendamentoB" alignment="1" pref="165" max="32767" attributes="0"/>
                       <Component id="Cadastro" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jToggleButton3" alignment="1" max="32767" attributes="0"/>
+                      <Component id="Buscar" alignment="1" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="177" max="32767" attributes="0"/>
@@ -89,7 +89,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToggleButton2" min="-2" pref="45" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jToggleButton3" min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="Buscar" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -120,12 +120,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadastroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+    <Component class="javax.swing.JToggleButton" name="Buscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

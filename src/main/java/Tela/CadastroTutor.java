@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Tela;
+import com.mycompany.clinicaveterinaria.Tutor;
 
 import com.mycompany.clinicaveterinaria.Tutor;
 
@@ -12,6 +13,7 @@ import com.mycompany.clinicaveterinaria.Tutor;
  */
 public class CadastroTutor extends javax.swing.JFrame {
         Cadastro cadastroJ;
+        Tutor newTutor;
     /**
      * Creates new form CadastroTutor
      */

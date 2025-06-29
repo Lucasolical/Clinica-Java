@@ -11,11 +11,11 @@ public class ProfissionalExtra extends User
         this.turno = turno;
     }
 
-    String getTurno(){
+    public String getTurno(){
         return turno;
     }
 
-    void setTurno(String turno){
+    public void setTurno(String turno){
         this.turno = turno;
     }
 }
