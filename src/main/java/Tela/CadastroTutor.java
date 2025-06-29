@@ -36,7 +36,7 @@ public class CadastroTutor extends javax.swing.JFrame {
         Cpf = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Telefone = new javax.swing.JTextField();
-        Cpf1 = new javax.swing.JTextField();
+        Endereco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -58,11 +58,21 @@ public class CadastroTutor extends javax.swing.JFrame {
         jLabel5.setText("Endereco");
 
         Confirmar.setText("Confirmar");
+        Confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("Cadastro de Tutor");
 
         jToggleButton1.setText("Adicionar Animal");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Animais");
 
@@ -100,7 +110,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addComponent(Email)
                     .addComponent(Nome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Telefone)
-                    .addComponent(Cpf1)
+                    .addComponent(Endereco)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -141,7 +151,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cpf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -168,6 +178,15 @@ public class CadastroTutor extends javax.swing.JFrame {
         cadastroJ.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_VoltarCActionPerformed
+
+    private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
+        Tutor newTutor = new Tutor(Nome.getText(), Email.getText(), 
+                Endereco.getText(), Telefone.getText(), Cpf.getText());
+    }//GEN-LAST:event_ConfirmarActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,8 +226,8 @@ public class CadastroTutor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirmar;
     private javax.swing.JTextField Cpf;
-    private javax.swing.JTextField Cpf1;
     private javax.swing.JTextField Email;
+    private javax.swing.JTextField Endereco;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Telefone;
     private javax.swing.JToggleButton VoltarC;
