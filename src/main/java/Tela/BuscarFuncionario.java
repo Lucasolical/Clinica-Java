@@ -5,7 +5,11 @@
 package Tela;
 
 import com.mycompany.clinicaveterinaria.ProfissionalExtra;
+import com.mycompany.clinicaveterinaria.User;
+import com.mycompany.clinicaveterinaria.Veterinario;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -37,12 +41,12 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        cfmv = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         telefone = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        especialidade = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         turno = new javax.swing.JTextField();
@@ -84,9 +88,9 @@ public class BuscarFuncionario extends javax.swing.JFrame {
 
         jLabel6.setText("CFMV:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        cfmv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                cfmvActionPerformed(evt);
             }
         });
 
@@ -102,7 +106,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
 
         jLabel8.setText("Especialidade:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oftalmologista", "Cardiologista", "Item 3", "Item 4" }));
+        especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oftalmologista", "Cardiologista", "Item 3", "Item 4" }));
 
         jLabel9.setText("Turno:");
 
@@ -140,14 +144,14 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(telefone)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cfmv, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel10)
@@ -189,12 +193,12 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cfmv, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -217,9 +221,9 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void cfmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cfmvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_cfmvActionPerformed
 
     private void telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneActionPerformed
         // TODO add your handling code here:
@@ -230,11 +234,34 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_turnoActionPerformed
 
     private void PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarActionPerformed
-       ProfissionalExtra funcionario = (ProfissionalExtra)Globals.clinica.getUser(cpf.getText()); 
-       nome.setText(funcionario.getName());
-       email.setText(funcionario.getEmail());
-       telefone.setText(funcionario.getPhoneNumber());
-       turno.setText(funcionario.getTurno());
+       User user = Globals.clinica.getUser(cpf.getText());
+       if(user == null){
+           System.out.println("erro no user");
+           System.exit(1);
+       }
+       System.out.println("fora");    
+       if(user.getClass().getName().equals("ProfissionalExtra")){
+           System.out.println("entrei");
+           ProfissionalExtra f = (ProfissionalExtra) user;
+           nome.setText(f.getName());
+           email.setText(f.getEmail());
+           telefone.setText(f.getPhoneNumber());
+           turno.setText(f.getTurno());
+           especialidade.setEnabled(false);
+           cfmv.setEnabled(false);
+           
+        }
+       else if(user.getClass().getName().equals("Veterinario")){
+           Veterinario v = (Veterinario) user;
+           nome.setText(v.getName());
+           email.setText(v.getEmail());
+           telefone.setText(v.getPhoneNumber());
+           cfmv.setText(v.getCfmv());
+           especialidade.getToolTipText();
+           turno.setEnabled(false);
+           
+       }
+            
        
 // TODO add your handling code here:
     }//GEN-LAST:event_PesquisarActionPerformed
@@ -276,10 +303,11 @@ public class BuscarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Pesquisar;
+    private javax.swing.JTextField cfmv;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
+    private javax.swing.JComboBox<String> especialidade;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -289,7 +317,6 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField telefone;
     private javax.swing.JTextField turno;
