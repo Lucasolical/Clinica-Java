@@ -5,6 +5,8 @@
 package Tela;
 import com.mycompany.clinicaveterinaria.Tutor;
 
+import com.mycompany.clinicaveterinaria.Tutor;
+
 /**
  *
  * @author felip
