@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import java.util.*;
 
 public class Globals{
-    public static Clinica clinica;
+    public static Clinica clinica = new Clinica();
     public static Stack<JFrame> paneHistory = new Stack<JFrame>();
     public static JFrame home = new Menu();
 
