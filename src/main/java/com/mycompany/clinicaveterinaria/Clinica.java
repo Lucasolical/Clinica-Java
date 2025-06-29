@@ -195,7 +195,7 @@ public class Clinica {
 
     public Clinica(){
         addSpecialty("Fisioterapeuta", 10);
-        addSpecialty("Oftamologista", 20);
+        addSpecialty("Oftalmologista", 20);
         addSpecialty("Pediatra", 5);
         addSpecialty("Otorrinolaringologista", 33);
         addSpecialty("Cardiologista", 15);

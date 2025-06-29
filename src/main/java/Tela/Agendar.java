@@ -205,10 +205,7 @@ public class Agendar extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox5ActionPerformed
 
     private void VoltarAgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarAgActionPerformed
-        agendamentoJ = new Agendamento();
-        agendamentoJ.setVisible(true);
-        this.dispose();
-                // TODO add your handling code here:
+        Globals.panelReturn(this);
     }//GEN-LAST:event_VoltarAgActionPerformed
 
     /**

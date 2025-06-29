@@ -100,27 +100,19 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        funcionarioC = new CadastroFuncionario(); 
-        funcionarioC.setVisible(true);
-        this.dispose();         // TODO add your handling code here:
+        Globals.panelSwitch(this, new CadastroFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void VeterinarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeterinarioBActionPerformed
-        veterinarioC = new CadastroVet(); 
-        veterinarioC.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Globals.panelSwitch(this, new CadastroVet());
     }//GEN-LAST:event_VeterinarioBActionPerformed
 
     private void TutorBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorBActionPerformed
-        tutorC = new CadastroTutor(); 
-        tutorC.setVisible(true);
-        this.dispose();  // TODO add your handling code here:
+        Globals.panelSwitch(this, new CadastroTutor());
     }//GEN-LAST:event_TutorBActionPerformed
 
     private void VoltarCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCadActionPerformed
-        menuJ = new Menu(); 
-        menuJ.setVisible(true);
-        this.dispose();         // TODO add your handling code here:
+        Globals.panelReturn(this);
     }//GEN-LAST:event_VoltarCadActionPerformed
 
     /**

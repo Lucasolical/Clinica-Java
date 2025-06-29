@@ -178,9 +178,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
-        cadastroJ = new Cadastro(); 
-        cadastroJ.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Globals.panelReturn(this);
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed

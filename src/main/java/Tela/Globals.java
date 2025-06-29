@@ -2,11 +2,11 @@ package Tela;
 import com.mycompany.clinicaveterinaria.Clinica;
 import javax.swing.JFrame;
 import java.util.*;
+import java.lang.Class.*;
 
 public class Globals{
     public static Clinica clinica = new Clinica();
     public static Stack<JFrame> paneHistory = new Stack<JFrame>();
-    public static JFrame home = new Menu();
 
     public static void panelSwitch(JFrame currentPanel, JFrame nextPanel){
         nextPanel.setVisible(true);
@@ -23,13 +23,16 @@ public class Globals{
         }
 
         if(previousPanel != null){
+            previousPanel.invalidate();
+            previousPanel.revalidate();
+            previousPanel.repaint();
             previousPanel.setVisible(true);
             currentPanel.dispose();
         }
     }
 
     public static void goHome(JFrame currentPanel){
-        home.setVisible(true);
+        new Menu().setVisible(true);
         currentPanel.dispose();
         paneHistory.clear();
     }

@@ -34,6 +34,11 @@ public class Busca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jToggleButton1.setText("Voltar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         FuncionarioB.setText("Funcionario");
         FuncionarioB.addActionListener(new java.awt.event.ActionListener() {
@@ -85,10 +90,12 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        funcionario = new BuscarFuncionario();
-        funcionario.setVisible(true);  
-        this.dispose();// TODO add your handling code here:
+        Globals.panelSwitch(this, new BuscarFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        Globals.panelReturn(this);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
