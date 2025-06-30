@@ -13,7 +13,6 @@ import com.mycompany.clinicaveterinaria.Tutor;
  */
 public class CadastroTutor extends javax.swing.JFrame {
         Cadastro cadastroJ;
-        Tutor newTutor;
     /**
      * Creates new form CadastroTutor
      */
@@ -118,7 +117,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -184,12 +183,21 @@ public class CadastroTutor extends javax.swing.JFrame {
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
         Tutor newTutor = new Tutor(Nome.getText(), Email.getText(), 
                 Endereco.getText(), Telefone.getText(), Cpf.getText());
+        if(!Globals.clinica.signUser(newTutor)){
+            System.out.println("Erro tentando criar um novo usuário");
+        }
+        Limpar();
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
+    private void Limpar(){
+        Email.setText("");
+        Cpf.setText("");
+        Nome.setText("");
+        Telefone.setText("");
+    }
     /**
      * @param args the command line arguments
      */

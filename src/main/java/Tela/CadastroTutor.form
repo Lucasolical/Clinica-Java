@@ -67,7 +67,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Confirmar" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="Confirmar" min="-2" pref="138" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>

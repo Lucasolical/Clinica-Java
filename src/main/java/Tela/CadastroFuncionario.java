@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
     Cadastro cadastroJ;
-    ArrayList<ProfissionalExtra> funcionario;
     /**
      * Creates new form CadastroFuncionario
      */
