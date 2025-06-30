@@ -34,10 +34,17 @@ public class Busca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
+        jToggleButton1.setText("Voltar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+=======
         VoltarB.setText("Voltar");
         VoltarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VoltarBActionPerformed(evt);
+>>>>>>> da6c27141282ca68897325a126b24595bbed4070
             }
         });
 
@@ -91,16 +98,20 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        funcionario = new BuscarFuncionario();
-        funcionario.setVisible(true);  
-        this.dispose();// TODO add your handling code here:
+        Globals.panelSwitch(this, new BuscarFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
+<<<<<<< HEAD
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        Globals.panelReturn(this);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+=======
     private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
         menuJ = new Menu();
         menuJ.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_VoltarBActionPerformed
+>>>>>>> da6c27141282ca68897325a126b24595bbed4070
 
     /**
      * @param args the command line arguments

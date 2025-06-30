@@ -68,7 +68,11 @@
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
       <Events>
+<<<<<<< HEAD
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+=======
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VoltarBActionPerformed"/>
+>>>>>>> da6c27141282ca68897325a126b24595bbed4070
       </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="FuncionarioB">

@@ -107,25 +107,19 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendamentoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoBActionPerformed
-        agendamentoJ = new Agendamento(); 
-        agendamentoJ.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Globals.panelSwitch(this, new Agendamento());
     }//GEN-LAST:event_AgendamentoBActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        Globals.panelSwitch(this, new AplicaçãoVacina());
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
-        cadastroJ = new Cadastro(); 
-        cadastroJ.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Globals.panelSwitch(this, new Cadastro());
     }//GEN-LAST:event_CadastroActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        buscaJ = new Busca();
-        buscaJ.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Globals.panelSwitch(this, new Busca());
     }//GEN-LAST:event_BuscarActionPerformed
 
     /**

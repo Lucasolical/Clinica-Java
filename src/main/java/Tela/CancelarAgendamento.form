@@ -28,6 +28,15 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="javax.swing.JToggleButton" name="VoltarAg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VoltarAgActionPerformed"/>
+      </Events>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -56,8 +65,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                       <Component id="jToggleButton2" min="-2" pref="84" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="VoltarAg" min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -76,6 +83,7 @@
                                       <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jTextField1" min="-2" pref="188" max="-2" attributes="0"/>
+                                  <Component id="VoltarAg1" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
@@ -115,9 +123,9 @@
                   <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToggleButton2" alignment="1" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="VoltarAg" alignment="1" min="-2" pref="48" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jToggleButton2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="VoltarAg1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -236,15 +244,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="VoltarAg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Voltar"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VoltarAgActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -297,6 +296,15 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar Agendamento"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="VoltarAg1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VoltarAg1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

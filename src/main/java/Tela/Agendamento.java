@@ -92,22 +92,16 @@ public class Agendamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendarCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarCBActionPerformed
-        consultaJ = new Agendar();
-        consultaJ.setVisible(true);
-        this.dispose();
+        Globals.panelSwitch(this, new Agendar());
 // TODO add your handling code here:
     }//GEN-LAST:event_AgendarCBActionPerformed
 
     private void VoltarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarMActionPerformed
-        menuJ = new Menu(); 
-        menuJ.setVisible(true);
-        this.dispose();         // TODO add your handling code here:
+        Globals.panelReturn(this);
     }//GEN-LAST:event_VoltarMActionPerformed
 
     private void CandelarABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandelarABActionPerformed
-        cancelarJ = new CancelarAgendamento();  
-        cancelarJ.setVisible(true);
-        this.dispose();// TODO add your handling code here:
+        Globals.panelSwitch(this, new CancelarAgendamento());
     }//GEN-LAST:event_CandelarABActionPerformed
 
     /**
