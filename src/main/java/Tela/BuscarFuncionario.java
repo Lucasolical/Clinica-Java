@@ -16,6 +16,7 @@ import java.util.Set;
  * @author Lucas
  */
 public class BuscarFuncionario extends javax.swing.JFrame {
+    Busca buscaJ;
     /**
      * Creates new form BuscarFuncionario
      */
@@ -36,7 +37,6 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         cpf = new javax.swing.JTextField();
         Pesquisar = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         email = new javax.swing.JTextField();
         nome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -50,6 +50,8 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         turno = new javax.swing.JTextField();
+        VoltarB = new javax.swing.JButton();
+        profissao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,8 +71,6 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Profissão:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Veterinario", "Funcionario extra" }));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +107,11 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         jLabel8.setText("Especialidade:");
 
         especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oftalmologista", "Cardiologista", "Item 3", "Item 4" }));
+        especialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Turno:");
 
@@ -116,6 +121,13 @@ public class BuscarFuncionario extends javax.swing.JFrame {
         turno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 turnoActionPerformed(evt);
+            }
+        });
+
+        VoltarB.setText("Voltar");
+        VoltarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarBActionPerformed(evt);
             }
         });
 
@@ -131,12 +143,11 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Pesquisar))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(profissao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Pesquisar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -164,6 +175,10 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(VoltarB)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,8 +192,8 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                     .addComponent(Pesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(profissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +218,9 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(VoltarB)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,26 +255,31 @@ public class BuscarFuncionario extends javax.swing.JFrame {
        if(user == null){
            System.out.println("erro no user");
            System.exit(1);
-       }
-       System.out.println("fora");    
-       if(user.getClass().getName().equals("ProfissionalExtra")){
-           System.out.println("entrei");
+       }    
+       if(user.getClass().getSimpleName().equals("ProfissionalExtra")){
            ProfissionalExtra f = (ProfissionalExtra) user;
+           profissao.setText("Funcionario");
            nome.setText(f.getName());
            email.setText(f.getEmail());
            telefone.setText(f.getPhoneNumber());
+           turno.setEnabled(true);
            turno.setText(f.getTurno());
+           especialidade.setSelectedItem("");
            especialidade.setEnabled(false);
+           cfmv.setText("");
            cfmv.setEnabled(false);
-           
         }
-       else if(user.getClass().getName().equals("Veterinario")){
+       else if(user.getClass().getSimpleName().equals("Veterinario")){
            Veterinario v = (Veterinario) user;
+           profissao.setText("Veterinario");
            nome.setText(v.getName());
            email.setText(v.getEmail());
            telefone.setText(v.getPhoneNumber());
+           cfmv.setEnabled(true);
            cfmv.setText(v.getCfmv());
-           especialidade.getToolTipText();
+           especialidade.setEnabled(true);
+           especialidade.setSelectedItem(v.getSpecialty().nome);
+           turno.setText("");
            turno.setEnabled(false);
            
        }
@@ -265,6 +287,16 @@ public class BuscarFuncionario extends javax.swing.JFrame {
        
 // TODO add your handling code here:
     }//GEN-LAST:event_PesquisarActionPerformed
+
+    private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
+        buscaJ = new Busca();
+        buscaJ.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_VoltarBActionPerformed
+
+    private void especialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especialidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,11 +335,11 @@ public class BuscarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Pesquisar;
+    private javax.swing.JButton VoltarB;
     private javax.swing.JTextField cfmv;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox<String> especialidade;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -318,6 +350,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField profissao;
     private javax.swing.JTextField telefone;
     private javax.swing.JTextField turno;
     // End of variables declaration//GEN-END:variables

@@ -10,6 +10,7 @@ package Tela;
  */
 public class Busca extends javax.swing.JFrame {
     BuscarFuncionario funcionario;
+    Menu menuJ;
     /**
      * Creates new form Busca
      */
@@ -26,17 +27,24 @@ public class Busca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        VoltarB = new javax.swing.JToggleButton();
         FuncionarioB = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
         jToggleButton1.setText("Voltar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+=======
+        VoltarB.setText("Voltar");
+        VoltarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarBActionPerformed(evt);
+>>>>>>> da6c27141282ca68897325a126b24595bbed4070
             }
         });
 
@@ -58,7 +66,7 @@ public class Busca extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +90,7 @@ public class Busca extends javax.swing.JFrame {
                     .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(98, Short.MAX_VALUE))
         );
 
@@ -93,9 +101,17 @@ public class Busca extends javax.swing.JFrame {
         Globals.panelSwitch(this, new BuscarFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
+<<<<<<< HEAD
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         Globals.panelReturn(this);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+=======
+    private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
+        menuJ = new Menu();
+        menuJ.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_VoltarBActionPerformed
+>>>>>>> da6c27141282ca68897325a126b24595bbed4070
 
     /**
      * @param args the command line arguments
@@ -134,8 +150,8 @@ public class Busca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton FuncionarioB;
+    private javax.swing.JToggleButton VoltarB;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }

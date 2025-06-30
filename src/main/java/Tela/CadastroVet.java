@@ -66,7 +66,7 @@ public class CadastroVet extends javax.swing.JFrame {
 
         jLabel3.setText("Especialidade:");
 
-        especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oftalmologista", "Cardiologista", "Item 3", "Item 4" }));
+        especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "Oftalmologista", "Cardiologista" }));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,12 +226,19 @@ public class CadastroVet extends javax.swing.JFrame {
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
         // TODO add your handling code here:
-        Veterinario v = new Veterinario(nome.getText(), email.getText(), Globals.clinica.getSpecialty(especialidade.getToolTipText()),
+        Veterinario v = new Veterinario(nome.getText(), email.getText(), Globals.clinica.getSpecialty((String)especialidade.getSelectedItem()),
                 cpf.getText(),telefone.getText(), cfmv.getText());
         Globals.clinica.signUser(v);
-           
+        Limpar();
     }//GEN-LAST:event_CadastrarActionPerformed
-
+    private void Limpar(){
+        email.setText("");
+        cpf.setText("");
+        nome.setText("");
+        telefone.setText("");
+        cfmv.setText("");
+    }
+    
     private void clear()
     {
         cpf.setText("lucastchola");
