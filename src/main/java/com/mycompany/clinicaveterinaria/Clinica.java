@@ -14,6 +14,14 @@ public class Clinica {
     List<Consulta> consultas= new ArrayList<Consulta>();
     List<Agendamento> agendamentos = new ArrayList<Agendamento>();
 
+    public ArrayList<String> getSpecialtiesAsStrings(){
+        ArrayList<String> strings = new ArrayList<>();
+        for(Specialty s : specialties){
+            strings.add(s.nome);
+        }
+        return strings;
+    }
+
     public Specialty getSpecialty(String specialty){
         for(Specialty spec : specialties){
             if(specialty == spec.nome){

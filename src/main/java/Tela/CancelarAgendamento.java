@@ -212,7 +212,7 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void VoltarAg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarAg1ActionPerformed
-        // TODO add your handling code here:
+       Globals.panelReturn(this);
     }//GEN-LAST:event_VoltarAg1ActionPerformed
 
     /**

@@ -3,6 +3,7 @@ import com.mycompany.clinicaveterinaria.Clinica;
 import javax.swing.JFrame;
 import java.util.*;
 import java.lang.Class.*;
+import java.lang.reflect.Constructor;
 
 public class Globals{
     public static Clinica clinica = new Clinica();
@@ -10,7 +11,10 @@ public class Globals{
 
     public static void panelSwitch(JFrame currentPanel, JFrame nextPanel){
         nextPanel.setVisible(true);
-        paneHistory.push(currentPanel);
+        try{
+            paneHistory.push(currentPanel.getClass().getConstructor().newInstance());
+        }catch(Throwable e){
+        }
         currentPanel.dispose();
     }
 

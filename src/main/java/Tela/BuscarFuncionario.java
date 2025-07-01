@@ -220,8 +220,8 @@ public class BuscarFuncionario extends javax.swing.JFrame {
                     .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(VoltarB)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+                .addContainerGap(14, Short.MAX_VALUE)));
+        especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(Globals.clinica.getSpecialtiesAsStrings().toArray(new String[0])));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
