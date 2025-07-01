@@ -9,6 +9,14 @@ package Tela;
  * @author Lucas
  */
 public class Agendamento extends javax.swing.JFrame {
+    PanelController controller = new PanelController();
+
+    public Agendamento(PanelController controller){
+        initComponents();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
+
     Menu menuJ;
     Agendar consultaJ;
     CancelarAgendamento cancelarJ;
@@ -28,10 +36,20 @@ public class Agendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         AgendarCB = new javax.swing.JToggleButton();
         VoltarM = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         CandelarAB = new javax.swing.JToggleButton();
+        jButton5 = new javax.swing.JButton();
+
+        jButton3.setForeground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("🏠︎");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,50 +77,74 @@ public class Agendamento extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setForeground(new java.awt.Color(255, 0, 0));
+        jButton5.setText("🏠︎");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(VoltarM, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CandelarAB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgendarCB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(8, 8, 8)))
-                .addGap(58, 58, 58))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(VoltarM, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CandelarAB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AgendarCB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton5))
+                .addGap(12, 12, 12)
                 .addComponent(AgendarCB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CandelarAB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(VoltarM, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(95, 95, 95))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendarCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarCBActionPerformed
-        Globals.panelSwitch(this, new Agendar());
+        controller.panelSwitch(this, new Agendar());
 // TODO add your handling code here:
     }//GEN-LAST:event_AgendarCBActionPerformed
 
     private void VoltarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarMActionPerformed
-        Globals.panelReturn(this);
+        controller.panelReturn(this);
     }//GEN-LAST:event_VoltarMActionPerformed
 
     private void CandelarABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandelarABActionPerformed
-        Globals.panelSwitch(this, new CancelarAgendamento());
+        controller.panelSwitch(this, new CancelarAgendamento());
     }//GEN-LAST:event_CandelarABActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +185,8 @@ public class Agendamento extends javax.swing.JFrame {
     private javax.swing.JToggleButton AgendarCB;
     private javax.swing.JToggleButton CandelarAB;
     private javax.swing.JToggleButton VoltarM;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

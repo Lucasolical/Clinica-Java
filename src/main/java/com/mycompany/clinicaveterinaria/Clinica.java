@@ -22,6 +22,14 @@ public class Clinica {
         return strings;
     }
 
+    public ArrayList<String> getVacinasAsStrings(){
+        ArrayList<String> strings = new ArrayList<>();
+        for(Vacina s : tiposVacinas){
+            strings.add(s.nome);
+        }
+        return strings;
+    }
+
     public Specialty getSpecialty(String specialty){
         for(Specialty spec : specialties){
             if(specialty == spec.nome){

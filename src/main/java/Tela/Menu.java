@@ -12,12 +12,20 @@ public class Menu extends javax.swing.JFrame {
     Cadastro cadastroJ;
     Agendamento agendamentoJ;
     Busca buscaJ;
+    PanelController controller = new PanelController();
+
+    public Menu(PanelController controller){
+        initComponents();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +43,7 @@ public class Menu extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         Cadastro = new javax.swing.JToggleButton();
         Buscar = new javax.swing.JToggleButton();
+        homeButton = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -75,6 +84,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        homeButton.setForeground(new java.awt.Color(255, 0, 0));
+        homeButton.setText("🏠︎");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,11 +105,17 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(Cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(177, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(8, 8, 8)
+                .addComponent(homeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AgendamentoB, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,20 +130,24 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendamentoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoBActionPerformed
-        Globals.panelSwitch(this, new Agendamento());
+        controller.panelSwitch(this, new Agendamento());
     }//GEN-LAST:event_AgendamentoBActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        Globals.panelSwitch(this, new AplicaçãoVacina());
+        controller.panelSwitch(this, new AplicaçãoVacina());
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
-        Globals.panelSwitch(this, new Cadastro());
+        controller.panelSwitch(this, new Cadastro());
     }//GEN-LAST:event_CadastroActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        Globals.panelSwitch(this, new Busca());
+        controller.panelSwitch(this, new Busca());
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +188,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JToggleButton AgendamentoB;
     private javax.swing.JToggleButton Buscar;
     private javax.swing.JToggleButton Cadastro;
+    private javax.swing.JButton homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;

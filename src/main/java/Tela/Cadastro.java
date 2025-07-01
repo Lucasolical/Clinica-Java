@@ -9,6 +9,14 @@ package Tela;
  * @author Lucas
  */
 public class Cadastro extends javax.swing.JFrame {
+    PanelController controller = new PanelController();
+
+    public Cadastro(PanelController controller){
+        initComponents();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
+
         //variaveis para entrar nas respectivas janelas
         CadastroVet veterinarioC;
         CadastroFuncionario funcionarioC;
@@ -34,6 +42,7 @@ public class Cadastro extends javax.swing.JFrame {
         VeterinarioB = new javax.swing.JToggleButton();
         TutorB = new javax.swing.JToggleButton();
         VoltarCad = new javax.swing.JToggleButton();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,27 +74,37 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
+        homeButton.setForeground(new java.awt.Color(255, 0, 0));
+        homeButton.setText("🏠︎");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap(138, Short.MAX_VALUE)
-                        .addComponent(VeterinarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(VoltarCad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(FuncionarioB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addComponent(TutorB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(137, 137, 137))
+                    .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VeterinarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TutorB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VoltarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(7, 7, 7)
+                .addComponent(homeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(VeterinarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,27 +112,31 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(TutorB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(VoltarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        Globals.panelSwitch(this, new CadastroFuncionario());
+        controller.panelSwitch(this, new CadastroFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void VeterinarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeterinarioBActionPerformed
-        Globals.panelSwitch(this, new CadastroVet());
+        controller.panelSwitch(this, new CadastroVet());
     }//GEN-LAST:event_VeterinarioBActionPerformed
 
     private void TutorBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorBActionPerformed
-        Globals.panelSwitch(this, new CadastroTutor());
+        controller.panelSwitch(this, new CadastroTutor());
     }//GEN-LAST:event_TutorBActionPerformed
 
     private void VoltarCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCadActionPerformed
-        Globals.panelReturn(this);
+        controller.panelReturn(this);
     }//GEN-LAST:event_VoltarCadActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,5 +178,6 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JToggleButton TutorB;
     private javax.swing.JToggleButton VeterinarioB;
     private javax.swing.JToggleButton VoltarCad;
+    private javax.swing.JButton homeButton;
     // End of variables declaration//GEN-END:variables
 }

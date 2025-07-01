@@ -12,6 +12,14 @@ import java.util.ArrayList;
  * @author Lucas
  */
 public class CadastroVet extends javax.swing.JFrame {
+    PanelController controller = new PanelController();
+
+    public CadastroVet(PanelController controller){
+        initComponents();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
+
    Cadastro CadJ;
    ArrayList<Veterinario> vet = new ArrayList<>();
     /**
@@ -46,6 +54,7 @@ public class CadastroVet extends javax.swing.JFrame {
         telefone = new javax.swing.JTextField();
         VoltarCVet = new javax.swing.JToggleButton();
         Cadastrar = new javax.swing.JToggleButton();
+        homeButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -120,6 +129,14 @@ public class CadastroVet extends javax.swing.JFrame {
             }
         });
 
+        homeButton.setForeground(new java.awt.Color(255, 0, 0));
+        homeButton.setText("🏠︎");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,7 +172,9 @@ public class CadastroVet extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(52, 52, 52)
                                 .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(104, 104, 104))
+                        .addGap(53, 53, 53)
+                        .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
@@ -167,9 +186,11 @@ public class CadastroVet extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addComponent(homeButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -221,16 +242,20 @@ public class CadastroVet extends javax.swing.JFrame {
     }//GEN-LAST:event_telefoneActionPerformed
 
     private void VoltarCVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCVetActionPerformed
-        Globals.panelReturn(this);
+        controller.panelReturn(this);
     }//GEN-LAST:event_VoltarCVetActionPerformed
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
         // TODO add your handling code here:
-        Veterinario v = new Veterinario(nome.getText(), email.getText(), Globals.clinica.getSpecialty((String)especialidade.getSelectedItem()),
+        Veterinario v = new Veterinario(nome.getText(), email.getText(), controller.clinica.getSpecialty((String)especialidade.getSelectedItem()),
                 cpf.getText(),telefone.getText(), cfmv.getText());
-        Globals.clinica.signUser(v);
+        controller.clinica.signUser(v);
         Limpar();
     }//GEN-LAST:event_CadastrarActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_homeButtonActionPerformed
     private void Limpar(){
         email.setText("");
         cpf.setText("");
@@ -286,6 +311,7 @@ public class CadastroVet extends javax.swing.JFrame {
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox<String> especialidade;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

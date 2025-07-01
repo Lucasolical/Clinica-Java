@@ -14,6 +14,14 @@ import com.mycompany.clinicaveterinaria.User;
  * @author Lucas
  */
 public class BuscarUsuario extends javax.swing.JFrame {
+    PanelController controller = new PanelController();
+
+    public BuscarUsuario(PanelController controller){
+        this();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
+
     Busca buscaJ;
     /**
      * Creates new form BuscarUsuario
@@ -39,6 +47,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
         BuscarB = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         VoltarB = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +87,14 @@ public class BuscarUsuario extends javax.swing.JFrame {
             }
         });
 
+        homeButton.setForeground(new java.awt.Color(255, 0, 0));
+        homeButton.setText("🏠︎");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,7 +103,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(jLabel10))
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -105,14 +124,20 @@ public class BuscarUsuario extends javax.swing.JFrame {
                                         .addComponent(jToggleButton2)
                                         .addGap(70, 70, 70)
                                         .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(homeButton)))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -137,7 +162,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfActionPerformed
 
     private void BuscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarBActionPerformed
-        User user = Globals.clinica.getUser(cpf.getText());  
+        User user = controller.clinica.getUser(cpf.getText());  
         if(user == null){
            System.out.println("erro no user");
            System.exit(1);
@@ -161,6 +186,10 @@ public class BuscarUsuario extends javax.swing.JFrame {
         buscaJ.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_VoltarBActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +231,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JToggleButton BuscarB;
     private javax.swing.JButton VoltarB;
     private javax.swing.JTextField cpf;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

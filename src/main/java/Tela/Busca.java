@@ -9,6 +9,14 @@ package Tela;
  * @author Lucas
  */
 public class Busca extends javax.swing.JFrame {
+    PanelController controller = new PanelController();
+
+    public Busca(PanelController controller){
+        initComponents();
+        this.controller = controller;
+        this.controller.setPanel(this);
+    }
+
     BuscarFuncionario funcionario;
     /**
      * Creates new form Busca
@@ -32,6 +40,7 @@ public class Busca extends javax.swing.JFrame {
         FuncionarioB = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
+        jButton3 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,6 +85,14 @@ public class Busca extends javax.swing.JFrame {
 
         jToggleButton3.setText("Usuario");
 
+        jButton3.setForeground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("🏠︎");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,17 +107,22 @@ public class Busca extends javax.swing.JFrame {
                         .addGap(88, 88, 88)
                         .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 84, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addComponent(jLabel1)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton3))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,12 +136,16 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        Globals.panelSwitch(this, new BuscarFuncionario());
+        controller.panelSwitch(this, new BuscarFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        Globals.panelReturn(this);
+        controller.panelReturn(this);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        controller.goHome(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +185,7 @@ public class Busca extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton FuncionarioB;
     private javax.swing.JToggleButton VoltarB;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
