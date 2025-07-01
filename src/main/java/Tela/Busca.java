@@ -23,6 +23,7 @@ public class Busca extends javax.swing.JFrame {
      */
     public Busca() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

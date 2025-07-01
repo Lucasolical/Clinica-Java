@@ -23,6 +23,7 @@ public class CancelarAgendamento extends javax.swing.JFrame {
      */
     public CancelarAgendamento() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

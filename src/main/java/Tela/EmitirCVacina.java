@@ -22,6 +22,7 @@ public class EmitirCVacina extends javax.swing.JFrame {
      */
     public EmitirCVacina() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

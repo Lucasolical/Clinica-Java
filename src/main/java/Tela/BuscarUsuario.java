@@ -28,6 +28,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
      */
     public BuscarUsuario() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

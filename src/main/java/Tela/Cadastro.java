@@ -27,6 +27,7 @@ public class Cadastro extends javax.swing.JFrame {
      */
     public Cadastro() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

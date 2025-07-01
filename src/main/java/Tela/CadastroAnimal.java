@@ -23,6 +23,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
      */
     public CadastroAnimal() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

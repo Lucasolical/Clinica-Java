@@ -23,6 +23,7 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
      */
     public AplicaçãoVacina() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

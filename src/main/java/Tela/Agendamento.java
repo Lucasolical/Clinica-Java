@@ -25,6 +25,7 @@ public class Agendamento extends javax.swing.JFrame {
      */
     public Agendamento() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

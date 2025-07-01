@@ -26,6 +26,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
      */
     public CadastroFuncionario() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

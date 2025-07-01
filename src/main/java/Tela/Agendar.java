@@ -26,6 +26,7 @@ public class Agendar extends javax.swing.JFrame {
      */
     public Agendar() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

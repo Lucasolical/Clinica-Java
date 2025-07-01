@@ -24,6 +24,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
 

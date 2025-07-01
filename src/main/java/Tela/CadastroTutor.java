@@ -26,6 +26,7 @@ public class CadastroTutor extends javax.swing.JFrame {
      */
     public CadastroTutor() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

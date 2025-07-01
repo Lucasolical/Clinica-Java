@@ -22,6 +22,7 @@ public class ResultadoBuscarUsuario extends javax.swing.JFrame {
      */
     public ResultadoBuscarUsuario() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

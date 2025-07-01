@@ -30,6 +30,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
      */
     public BuscarFuncionario() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

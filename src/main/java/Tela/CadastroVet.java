@@ -27,6 +27,7 @@ public class CadastroVet extends javax.swing.JFrame {
      */
     public CadastroVet() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**

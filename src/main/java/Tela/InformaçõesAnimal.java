@@ -19,6 +19,7 @@ public class InformaçõesAnimal extends javax.swing.JFrame {
 
     public InformaçõesAnimal() {
         initComponents();
+        this.controller.setPanel(this);
     }
 
     /**
