@@ -268,25 +268,25 @@ public class Clinica {
        for(Tutor t : tutores){
            signUser(t);
        } 
-       tutores.get(0).addAnimal(new Animal("rex", "puddle", new Time(2004, 4, 7, 8, 40)));
+       tutores.get(0).addAnimal(new Animal("rex", "puddle", "2004, 4, 7, 8, 40"));
        tutores.get(0).addAnimal(new Animal("lola", "puddle", 
-                   new Time(2004, 4, 7, 8, 40)));
+                   "new Time(2004, 4, 7, 8, 40"));
        tutores.get(0).addAnimal(new Animal("bingus", "sphynx", 
-                   new Time(208, 4, 7, 8, 40)));
+                   "208, 4, 7, 8, 40"));
 
        tutores.get(1).addAnimal(new Animal("mel", "labrador",
-                   new Time(2016, 11, 12, 9, 15)));
+                   "2016, 11, 12, 9, 15"));
        tutores.get(1).addAnimal(new Animal("toby", "bulldog francês",
-                   new Time(2018, 6, 3, 10, 30)));
+                   "2018, 6, 3, 10, 30"));
        tutores.get(1).addAnimal(new Animal("mimi", "persa",
-                   new Time(2020, 2, 21, 14, 45)));
+               "2020, 2, 21, 14, 45"));
        tutores.get(1).addAnimal(new Animal("bella", "golden retriever",
-                   new Time(2021, 3, 14, 16, 25)));
+                   "2021, 3, 14, 16, 25"));
 
        tutores.get(2).addAnimal(new Animal("nina", "beagle",
-                   new Time(2017, 9, 29, 11, 0)));
+                   "2017, 9, 29, 11, 0"));
        tutores.get(2).addAnimal(new Animal("luke", "gato siamês",
-                   new Time(2019, 7, 8, 13, 10)));
+                   "2019, 7, 8, 13, 10"));
 
        if(!agendar(getSpecialty("Oftamologista"), new Time(2026, 4, 3, 8, 20), tutores.get(0).animals.get(0))){ System.out.println("didn't worked"); }
        if(!agendar(getSpecialty("Pediatra"), new Time(2026, 4, 3, 8, 40), tutores.get(0).animals.get(1))){ System.out.println("Didn't worked"); }

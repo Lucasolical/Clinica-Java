@@ -5,19 +5,19 @@ import java.util.ArrayList;
 public class Animal
 {
     String name, race;
-    Time birthDate;
+    String birthDate;
     Tutor tutor;
     ArrayList<VacinaAplicada> cartaoDeVacina = new ArrayList<VacinaAplicada>();
     ArrayList<Consulta> prontuario = new ArrayList<Consulta>();
 
-    public Animal(String name, String race, Time birthDate, Tutor tutor){
+    public Animal(String name, String race, String birthDate, Tutor tutor){
         this.name = name;
         this.race = race;
         this.birthDate = birthDate;
         this.tutor = tutor;
     }
 
-    public Animal(String name, String race, Time birthDate){
+    public Animal(String name, String race, String birthDate){
         this.name = name;
         this.race = race;
         this.birthDate = birthDate;
@@ -57,7 +57,7 @@ public class Animal
     public String getRace(){
         return race;
     }
-    public Time getBirthDate(){
+    public String getBirthDate(){
         return birthDate;
     }
     public Tutor getTutor(){
