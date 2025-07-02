@@ -44,7 +44,7 @@ public class CadastroTutor extends javax.swing.JFrame {
         Confirmar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        AdicionarAnimal = new javax.swing.JToggleButton();
         jLabel7 = new javax.swing.JLabel();
         VoltarC = new javax.swing.JToggleButton();
 
@@ -70,10 +70,10 @@ public class CadastroTutor extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("Cadastro de Tutor");
 
-        jToggleButton1.setText("Adicionar Animal");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        AdicionarAnimal.setText("Adicionar Animal");
+        AdicionarAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                AdicionarAnimalActionPerformed(evt);
             }
         });
 
@@ -115,9 +115,9 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addComponent(Telefone)
                     .addComponent(Endereco)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -127,7 +127,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AdicionarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(VoltarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -167,7 +167,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AdicionarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(VoltarC, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(12, Short.MAX_VALUE))))
@@ -189,14 +189,15 @@ public class CadastroTutor extends javax.swing.JFrame {
         Limpar();
     }//GEN-LAST:event_ConfirmarActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void AdicionarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarAnimalActionPerformed
+        Globals.panelSwitch(this, new CadastroAnimal());        // TODO add your handling code here:
+    }//GEN-LAST:event_AdicionarAnimalActionPerformed
     private void Limpar(){
         Email.setText("");
         Cpf.setText("");
         Nome.setText("");
         Telefone.setText("");
+        Endereco.setText("");
     }
     /**
      * @param args the command line arguments
@@ -234,6 +235,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton AdicionarAnimal;
     private javax.swing.JButton Confirmar;
     private javax.swing.JTextField Cpf;
     private javax.swing.JTextField Email;
@@ -251,6 +253,5 @@ public class CadastroTutor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -239,11 +239,6 @@ public class CadastroVet extends javax.swing.JFrame {
         cfmv.setText("");
     }
     
-    private void clear()
-    {
-        cpf.setText("lucastchola");
-    }
-    
     /**
      * @param args the command line arguments
      */
