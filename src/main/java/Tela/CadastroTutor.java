@@ -13,6 +13,7 @@ import com.mycompany.clinicaveterinaria.Tutor;
  */
 public class CadastroTutor extends javax.swing.JFrame {
         Cadastro cadastroJ;
+        Tutor newTutor;
     /**
      * Creates new form CadastroTutor
      */
@@ -181,7 +182,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
-        Tutor newTutor = new Tutor(Nome.getText(), Email.getText(), 
+        newTutor = new Tutor(Nome.getText(), Email.getText(), 
                 Endereco.getText(), Telefone.getText(), Cpf.getText());
         if(!Globals.clinica.signUser(newTutor)){
             System.out.println("Erro tentando criar um novo usuário");
@@ -190,7 +191,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void AdicionarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarAnimalActionPerformed
-        Globals.panelSwitch(this, new CadastroAnimal());        // TODO add your handling code here:
+        Globals.panelSwitch(this, new CadastroAnimal(newTutor));        // TODO add your handling code here:
     }//GEN-LAST:event_AdicionarAnimalActionPerformed
     private void Limpar(){
         Email.setText("");

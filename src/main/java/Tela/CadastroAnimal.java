@@ -4,6 +4,8 @@
  */
 package Tela;
 
+import com.mycompany.clinicaveterinaria.Tutor;
+
 /**
  *
  * @author felip
@@ -13,7 +15,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
     /**
      * Creates new form CadastroAnimal
      */
-    public CadastroAnimal() {
+    public CadastroAnimal(Tutor t) {
         initComponents();
     }
 
@@ -160,7 +162,8 @@ public class CadastroAnimal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroAnimal().setVisible(true);
+                Tutor dummyTutor = new Tutor("Tutor Teste", "teste@exemplo.com", "Rua Teste, 123", "111-222-3333", "123.456.789-00");
+                new CadastroAnimal(dummyTutor).setVisible(true);
             }
         });
     }
