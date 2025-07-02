@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Tela;
+import com.mycompany.clinicaveterinaria.Animal;
 import com.mycompany.clinicaveterinaria.Tutor;
 
 import com.mycompany.clinicaveterinaria.Tutor;
@@ -44,7 +45,7 @@ public class CadastroTutor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        animais = new javax.swing.JComboBox<>();
         AdicionarAnimal = new javax.swing.JToggleButton();
         jLabel7 = new javax.swing.JLabel();
         VoltarC = new javax.swing.JToggleButton();
@@ -70,6 +71,12 @@ public class CadastroTutor extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("Cadastro de Tutor");
+
+        animais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animaisActionPerformed(evt);
+            }
+        });
 
         AdicionarAnimal.setText("Adicionar Animal");
         AdicionarAnimal.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +123,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addComponent(Telefone)
                     .addComponent(Endereco)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(animais, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -161,7 +168,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(animais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addGap(117, 117, 117))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -193,6 +200,11 @@ public class CadastroTutor extends javax.swing.JFrame {
     private void AdicionarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarAnimalActionPerformed
         Globals.panelSwitch(this, new CadastroAnimal(newTutor));        // TODO add your handling code here:
     }//GEN-LAST:event_AdicionarAnimalActionPerformed
+
+    private void animaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaisActionPerformed
+        for(Animal an: newTutor.getAnimals())
+        animais.addItem(an.getName());    // TODO add your handling code here:
+    }//GEN-LAST:event_animaisActionPerformed
     private void Limpar(){
         Email.setText("");
         Cpf.setText("");
@@ -244,7 +256,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Telefone;
     private javax.swing.JToggleButton VoltarC;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> animais;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

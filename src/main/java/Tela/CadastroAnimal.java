@@ -14,12 +14,13 @@ import com.mycompany.clinicaveterinaria.Tutor;
  * @author felip
  */
 public class CadastroAnimal extends javax.swing.JFrame {
-
+Tutor t;
     /**
      * Creates new form CadastroAnimal
      */
     public CadastroAnimal(Tutor t) {
         initComponents();
+        this.t = t;
     }
 
     /**
@@ -33,7 +34,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
         jLabel4 = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
-        Confirmar1 = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,7 +54,12 @@ public class CadastroAnimal extends javax.swing.JFrame {
             }
         });
 
-        Confirmar1.setText("Voltar");
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nome:");
 
@@ -111,7 +117,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
                                     .addGap(46, 46, 46)
                                     .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(22, 22, 22)
-                        .addComponent(Confirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
@@ -134,7 +140,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Confirmar)
-                    .addComponent(Confirmar1))
+                    .addComponent(voltar))
                 .addGap(34, 34, 34))
         );
 
@@ -152,12 +158,17 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
         // TODO add your handling code here:
         Animal animal = new Animal(Nome.getText(),Data.getText(),Data.getText());
+        t.addAnimal(animal);
         
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void RacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RacaActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        Globals.panelReturn(this);     // TODO add your handling code here:
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +208,6 @@ public class CadastroAnimal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirmar;
-    private javax.swing.JButton Confirmar1;
     private javax.swing.JTextField Data;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Raca;
@@ -205,5 +215,6 @@ public class CadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }
