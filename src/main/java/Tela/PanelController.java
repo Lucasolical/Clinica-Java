@@ -11,7 +11,6 @@ public class PanelController{
     private Point lastFrameLocation = null;
     
     public void setPanel(JFrame panel){
-        System.out.println("something");
         panel.setSize(500, 600);        
         panel.setResizable(false);       
         panel.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);

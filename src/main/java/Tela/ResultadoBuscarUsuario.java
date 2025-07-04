@@ -12,7 +12,6 @@ public class ResultadoBuscarUsuario extends javax.swing.JFrame {
     PanelController controller = new PanelController();
 
     public ResultadoBuscarUsuario(PanelController controller){
-        System.out.println("bilolas");
         initComponents();
         this.controller = controller;
         this.controller.setPanel(this);
