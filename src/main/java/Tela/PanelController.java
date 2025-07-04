@@ -7,7 +7,7 @@ import java.lang.reflect.*;
 
 public class PanelController{
     public Clinica clinica = new Clinica();
-    private Stack<Constructor<?>> paneHistory = new Stack<>();
+    private Stack<Constructor<?>> paneHistory = new Stack<Constructor<?>>();
     private Point lastFrameLocation = null;
     
     public void setPanel(JFrame panel){
@@ -24,39 +24,48 @@ public class PanelController{
 
     public void panelSwitch(JFrame currentPanel, JFrame nextPanel){
         lastFrameLocation = currentPanel.getLocation();
-        nextPanel.setVisible(true);
+        try{
+            nextPanel = nextPanel.getClass().getConstructor(PanelController.class).newInstance(this);
+        }catch(Throwable e){
+            System.out.println("Problema instanciando classe em panel switch.");
+            return;
+        }
+
         try{
             paneHistory.push(currentPanel.getClass().getConstructor(PanelController.class));
         }catch(Throwable e){
             System.out.println("problem");
+            return;
         }
+
+        nextPanel.setVisible(true);
         currentPanel.dispose();
     }
 
     public void panelReturn(JFrame currentPanel){
-        lastFrameLocation = currentPanel.getLocation();
         Constructor<?> previousPanel;
         try{
             previousPanel = paneHistory.pop();
         }catch(Throwable e){
             System.out.println("Não há itens para dar pop no stack.");
-            previousPanel = null;
+            return;
         }
-
+        lastFrameLocation = currentPanel.getLocation();
+        JFrame newPanel;
         try{
-            previousPanel.newInstance(this);
+            newPanel = (JFrame)previousPanel.newInstance(this);
         }catch(Throwable e){
             System.out.println("Erro tentando instanciar frame.");
+            return;
         }
 
-        if(previousPanel != null){
-            currentPanel.dispose();
-        }
+        newPanel.setVisible(true);
+        currentPanel.dispose();
     }
 
     public void goHome(JFrame currentPanel){
         lastFrameLocation = currentPanel.getLocation();
-        new Menu().setVisible(true);
+        new Menu(this).setVisible(true);
         currentPanel.dispose();
         paneHistory.clear();
     }

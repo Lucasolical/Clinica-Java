@@ -13,6 +13,7 @@ public class RealizarConsulta extends javax.swing.JFrame {
 
     public RealizarConsulta(PanelController controller){
         initComponents();
+        System.out.println("bilolas");
         this.controller = controller;
         this.controller.setPanel(this);
     }

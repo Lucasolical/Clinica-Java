@@ -17,7 +17,8 @@ public class BuscarUsuario extends javax.swing.JFrame {
     PanelController controller = new PanelController();
 
     public BuscarUsuario(PanelController controller){
-        this();
+        System.out.println("bilolas");
+        initComponents();
         this.controller = controller;
         this.controller.setPanel(this);
     }

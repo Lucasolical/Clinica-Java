@@ -19,6 +19,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     PanelController controller = new PanelController();
 
     public BuscarFuncionario(PanelController controller){
+        System.out.println("bilolas");
         initComponents();
         this.controller = controller;
         this.controller.setPanel(this);
