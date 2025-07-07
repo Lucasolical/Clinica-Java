@@ -89,6 +89,7 @@ public class CadastroTutor extends javax.swing.JFrame {
         });
 
         AdicionarAnimal.setText("Adicionar Animal");
+        AdicionarAnimal.setEnabled(false);
         AdicionarAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdicionarAnimalActionPerformed(evt);

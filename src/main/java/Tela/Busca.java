@@ -85,6 +85,11 @@ public class Busca extends javax.swing.JFrame {
         jLabel1.setText("Buscar");
 
         jToggleButton3.setText("Usuario");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         jButton3.setForeground(new java.awt.Color(255, 0, 0));
         jButton3.setText("🏠︎");
@@ -147,6 +152,10 @@ public class Busca extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         controller.goHome(this);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        controller.panelSwitch(this, new BuscarUsuario());
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments

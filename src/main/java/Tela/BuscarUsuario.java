@@ -8,6 +8,7 @@ import com.mycompany.clinicaveterinaria.Animal;
 import com.mycompany.clinicaveterinaria.ProfissionalExtra;
 import com.mycompany.clinicaveterinaria.Tutor;
 import com.mycompany.clinicaveterinaria.User;
+import java.util.List;
 
 /**
  *
@@ -179,7 +180,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarBActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        Tutor tutor = (Tutor)controller.clinica.getUser(cpf.getText());
+        List<Animal> animais = tutor.getAnimals();
+        for(Animal a : animais){
+            
+        }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
