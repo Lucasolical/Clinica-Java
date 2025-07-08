@@ -5,7 +5,7 @@ import java.time.*;
 import java.lang.reflect.*;
 
 public class Clinica {
-    Time currentTime = new Time(2025, 5, 4, 0, 0);
+    public Time currentTime = new Time(2025, 5, 4, 0, 0);
 
     public List<Specialty> specialties = new ArrayList<Specialty>();
     public List<Vacina> tiposVacinas = new ArrayList<Vacina>();

@@ -4,6 +4,10 @@
  */
 package Tela;
 
+import com.mycompany.clinicaveterinaria.*;
+
+
+
 /**
  *
  * @author Lucas
@@ -36,14 +40,14 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cpf = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        animais = new javax.swing.JComboBox<>();
+        Aplicar = new javax.swing.JButton();
         VoltarC = new javax.swing.JToggleButton();
         jButton3 = new javax.swing.JButton();
 
@@ -51,16 +55,16 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
 
         jLabel1.setText("CPF do Tutor:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cpfActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
@@ -71,7 +75,12 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
 
         jLabel4.setText("Tipo de Vacina:");
 
-        jButton2.setText("Aplicar");
+        Aplicar.setText("Aplicar");
+        Aplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AplicarActionPerformed(evt);
+            }
+        });
 
         VoltarC.setText("Voltar");
         VoltarC.addActionListener(new java.awt.event.ActionListener() {
@@ -109,11 +118,11 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBox1, 0, 109, Short.MAX_VALUE)
-                                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField1))
+                                            .addComponent(tipo, 0, 109, Short.MAX_VALUE)
+                                            .addComponent(animais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cpf))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1))
+                                        .addComponent(buscar))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -122,7 +131,7 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
                         .addGap(11, 11, 11))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(jButton2)))
+                        .addComponent(Aplicar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,18 +144,18 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(animais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jButton2)
+                .addComponent(Aplicar)
                 .addGap(18, 18, 18)
                 .addComponent(VoltarC, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -155,13 +164,27 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        User user = controller.clinica.getUser(cpf.getText()); 
+        if(user == null){
+           System.out.println("erro no user");
+           System.exit(1);
+       }    
+        Tutor T = (Tutor)user;
+        animais.removeAllItems();
+        for(Animal a: T.getAnimals()){
+            animais.addItem(a.getName());
+            
+        }
+        for(String vac: controller.clinica.getVacinasAsStrings()){
+            tipo.addItem(vac);
+        }
+        
+    }//GEN-LAST:event_buscarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cpfActionPerformed
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
         controller.panelReturn(this);
@@ -170,6 +193,22 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         controller.goHome(this);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void AplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarActionPerformed
+        User user = controller.clinica.getUser(cpf.getText());
+        if(user == null){
+           System.out.println("erro no user");
+           System.exit(1);
+       }  
+        Tutor T = (Tutor)user;
+        Animal a = T.getAnimal(animais.getSelectedItem().toString());
+        VacinaAplicada vac = new VacinaAplicada(controller.clinica.getVacina(tipo.getSelectedItem().toString()),
+                                                                                controller.clinica.currentTime,10);
+        a.incluirVacina(vac);
+        
+        
+        
+    }//GEN-LAST:event_AplicarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,16 +246,16 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aplicar;
     private javax.swing.JToggleButton VoltarC;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> animais;
+    private javax.swing.JButton buscar;
+    private javax.swing.JTextField cpf;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> tipo;
     // End of variables declaration//GEN-END:variables
 }

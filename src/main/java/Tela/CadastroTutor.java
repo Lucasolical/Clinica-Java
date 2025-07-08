@@ -239,6 +239,7 @@ public class CadastroTutor extends javax.swing.JFrame {
         newTutor = new Tutor(Nome.getText(), Email.getText(), Endereco.getText(), Telefone.getText(), Cpf.getText());
         if(!controller.clinica.signUser(newTutor)){
             System.out.println("Erro tentando criar um novo usuário");
+            return;
         }
         newAnimal = new Animal(NomeDog.getText(),Raca.getText(), Data.getText());
         newTutor.addAnimal(newAnimal);
