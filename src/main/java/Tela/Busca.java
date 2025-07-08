@@ -146,7 +146,7 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        controller.panelSwitch(new BuscarFuncionario());
+        controller.panelSwitch(new BuscarFuncionario(controller));
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -158,11 +158,11 @@ public class Busca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        controller.panelSwitch(new BuscarUsuario());
+        controller.panelSwitch(new BuscarUsuario(controller));
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void voltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBActionPerformed
-        controller.panelReturn(this);     // TODO add your handling code here:
+        controller.panelReturn();     // TODO add your handling code here:
     }//GEN-LAST:event_voltarBActionPerformed
 
     private void jLabel1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel1PropertyChange

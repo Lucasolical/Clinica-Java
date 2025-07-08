@@ -27,6 +27,7 @@ public class CadastroAnimal extends javax.swing.JFrame {
      */
     public CadastroAnimal() {
         initComponents();
+        this.controller = new PanelController();
         this.controller.setPanel(this);
     }
 Tutor t;

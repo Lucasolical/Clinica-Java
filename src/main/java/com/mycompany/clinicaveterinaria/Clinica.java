@@ -5,7 +5,7 @@ import java.time.*;
 import java.lang.reflect.*;
 
 public class Clinica {
-    public Time currentTime = new Time(2025, 5, 4, 0, 0);
+    public Time currentTime = new Time(2025, 0, 0, 0, 0);
 
     public List<Specialty> specialties = new ArrayList<Specialty>();
     public List<Vacina> tiposVacinas = new ArrayList<Vacina>();
@@ -27,6 +27,7 @@ public class Clinica {
         for(Vacina s : tiposVacinas){
             strings.add(s.nome);
         }
+
         return strings;
     }
 
@@ -65,6 +66,7 @@ public class Clinica {
             return false;
 
         users.add(user);
+        System.out.println("Usuário cadastrado.");
 
         return true;
     }
@@ -158,7 +160,7 @@ public class Clinica {
         specialties.add(new Specialty(nome, price));
     }
 
-    boolean freeTime(Time time){
+    public boolean freeTime(Time time){
         for(Agendamento a : agendamentos){
             if(a.getDateAndTime().cmp(time) == 0){
                 return false;
@@ -169,7 +171,7 @@ public class Clinica {
     }
 
     //A parte das horas vão ser ignoradas
-    List<Time> getFreeTimes(Time time){
+    public List<Time> getFreeTimes(Time time){
         time.setHour(0);
         time.setMinute(0);
         List<Time> allTimes = new ArrayList<Time>();

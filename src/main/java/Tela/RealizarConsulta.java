@@ -18,7 +18,7 @@ public class RealizarConsulta extends javax.swing.JFrame {
 
     public RealizarConsulta() {
         initComponents();
-        this.controller.startPanel(this);
+        this.controller.setPanel(this);
     }
 
 

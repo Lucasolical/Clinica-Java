@@ -11,7 +11,7 @@ public class Time
     public Time(){
     }
 
-    public Time(int year, int month, int day, int hour, int minutes){
+    public Time(long year, long month, long day, long hour, long minutes){
         setYear(year);
         setMonth(month);
         setDay(day);
@@ -96,31 +96,31 @@ public class Time
         return (time - (time/hour) * hour);
     }
 
-    public void setYear(int year) {
+    public void setYear(long year) {
         if(year < 0)
             return;
         time -= getYear() * this.year;
         time += year * this.year;
     }
-    public void setMonth(int month) {
+    public void setMonth(long month) {
         if(month < 0)
             return;
         time -= getMonth() * this.month;
         time += month* this.month;
     }
-    public void setDay(int day){
+    public void setDay(long day){
         if(day < 0)
             return;
         time -= getDay() * this.day;
         time += day * this.day;
     }
-    public void setHour(int hour) {
+    public void setHour(long hour) {
         if(hour < 0)
             return;
         time -= getHour() * this.hour;
         time += hour * this.hour;
     }
-    public void setMinute(int minute) {
+    public void setMinute(long minute) {
         if(minute < 0)
             return;
         time -= getMinute();

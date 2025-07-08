@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Lucas
  */
 public class CadastroVet extends javax.swing.JFrame {
-    PanelController controller = new PanelController();
+    PanelController controller ;
 
     public CadastroVet(PanelController controller){
         initComponents();
@@ -26,6 +26,7 @@ public class CadastroVet extends javax.swing.JFrame {
      */
     public CadastroVet() {
         initComponents();
+        this.controller = new PanelController();
         this.controller.setPanel(this);
     }
 

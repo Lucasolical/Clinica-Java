@@ -9,6 +9,10 @@ public class PanelController{
     public Clinica clinica = new Clinica();
     private Stack<Constructor<?>> paneHistory = new Stack<Constructor<?>>();
     public JFrame curPanel = null;
+
+    public PanelController(){
+        System.out.println("Inicializando panel controller.");
+    }
     
     private void startPanel(JFrame panel){
         System.out.println("Starting the panel");
@@ -26,6 +30,7 @@ public class PanelController{
             startPanel(panel);
             return;
         }
+        System.out.println("Passou EXCLUSIVAMENTE pela função setpanel");
         panel.setSize(500, 600);        
         panel.setResizable(false);       
         panel.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -41,6 +46,7 @@ public class PanelController{
     }
 
     public void panelSwitch(JFrame nextPanel){
+        System.out.println("Switching panels.");
         if(curPanel == null){
             System.out.println("Não há painel atual.");
             return;
@@ -48,7 +54,7 @@ public class PanelController{
         try{
             paneHistory.push(curPanel.getClass().getConstructor(PanelController.class));
         }catch(Throwable e){
-            System.out.println("problem");
+            System.out.println("Erro tentando dar push no stack de histórico");
             return;
         }
 
@@ -59,6 +65,7 @@ public class PanelController{
     }
 
     public void panelReturn(){
+        System.out.println("Voltando");
         if(curPanel == null){
             System.out.println("Não há painel atual.");
             return;
@@ -71,6 +78,7 @@ public class PanelController{
             System.out.println("Não há itens para dar pop no stack.");
             return;
         }
+        System.out.println("panel popped");
         JFrame newPanel;
         try{
             newPanel = (JFrame)previousPanel.newInstance(this);
@@ -81,7 +89,7 @@ public class PanelController{
 
         curPanel.dispose();
         curPanel = newPanel;
-        setPanel();
+        setPanel(newPanel);
         newPanel.setVisible(true);
     }
 

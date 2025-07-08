@@ -9,7 +9,7 @@ package Tela;
  * @author felip
  */
 public class EmitirCVacina extends javax.swing.JFrame {
-    PanelController controller = new PanelController();
+    PanelController controller; 
 
     public EmitirCVacina(PanelController controller){
         initComponents();
@@ -20,6 +20,7 @@ public class EmitirCVacina extends javax.swing.JFrame {
      * Creates new form EmitirCVacina
      */
     public EmitirCVacina() {
+        controller = new PanelController();
         initComponents();
         this.controller.setPanel(this);
     }

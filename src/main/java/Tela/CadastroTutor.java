@@ -16,7 +16,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     Cadastro cadastroJ;
     Tutor newTutor;
     Animal newAnimal;
-    PanelController controller = new PanelController();
+    PanelController controller ;
 
     public CadastroTutor(PanelController controller){
         initComponents();
@@ -25,6 +25,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     
     public CadastroTutor() {
         initComponents();
+        this.controller = new PanelController();
         this.controller.setPanel(this);
     }
 

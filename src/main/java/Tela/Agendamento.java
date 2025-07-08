@@ -16,9 +16,6 @@ public class Agendamento extends javax.swing.JFrame {
         this.controller = controller;
     }
 
-    Menu menuJ;
-    Agendar consultaJ;
-    CancelarAgendamento cancelarJ;
     /**
      * Creates new form Agendamento
      */

@@ -12,7 +12,7 @@ import com.mycompany.clinicaveterinaria.User;
  * @author Lucas
  */
 public class CancelarAgendamento extends javax.swing.JFrame {
-    PanelController controller = new PanelController();
+    PanelController controller;
 
     public CancelarAgendamento(PanelController controller){
         initComponents();
@@ -25,6 +25,7 @@ public class CancelarAgendamento extends javax.swing.JFrame {
      */
     public CancelarAgendamento() {
         initComponents();
+        this.controller = new PanelController();
         this.controller.setPanel(this);
     }
 

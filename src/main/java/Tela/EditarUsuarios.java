@@ -13,18 +13,24 @@ import com.mycompany.clinicaveterinaria.User;
  * @author felip
  */
 public class EditarUsuarios extends javax.swing.JPanel {
-PanelController controller = new PanelController();
+    PanelController controller ;
     /**
      * Creates new form EditarUsuarios
      */
-    public EditarUsuarios() {
+
+    public EditarUsuarios(PanelController controller) {
         initComponents();
         this.controller = controller;
+    }
+
+    public EditarUsuarios() {
+        initComponents();
+        this.controller = new PanelController();
     }
     
     void iniciar()
     {
-    User user = controller.clinica.getUser(Cpf.getText()); 
+        User user = controller.clinica.getUser(Cpf.getText()); 
         if(user == null){
            System.out.println("erro no user");
            return;
