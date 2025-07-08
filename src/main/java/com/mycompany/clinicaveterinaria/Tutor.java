@@ -23,19 +23,21 @@ public class Tutor extends User
         animals.remove(animal);
     }
     
-    public List<Animal>getAnimals(){
-        return animals;
-    }
     public Animal getAnimal(String name){
         for(Animal a : animals){
-            if(name.equals(a.name)){
+            if(name == a.name){
                 return a;
             }
         }
 
         return null;
     }
-    String getAddress(){
+
+    public List<Animal>getAnimals(){
+        return animals;
+    }
+
+    public String getAddress(){
         return address;
     }
 

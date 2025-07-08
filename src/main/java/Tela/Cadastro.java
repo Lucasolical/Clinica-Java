@@ -14,7 +14,6 @@ public class Cadastro extends javax.swing.JFrame {
     public Cadastro(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
         //variaveis para entrar nas respectivas janelas
@@ -120,23 +119,23 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        controller.panelSwitch(this, new CadastroFuncionario());
+        controller.panelSwitch(new CadastroFuncionario(controller));
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void VeterinarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeterinarioBActionPerformed
-        controller.panelSwitch(this, new CadastroVet());
+        controller.panelSwitch(new CadastroVet(controller));
     }//GEN-LAST:event_VeterinarioBActionPerformed
 
     private void TutorBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorBActionPerformed
-        controller.panelSwitch(this, new CadastroTutor());
+        controller.panelSwitch(new CadastroTutor(controller));
     }//GEN-LAST:event_TutorBActionPerformed
 
     private void VoltarCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCadActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarCadActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**

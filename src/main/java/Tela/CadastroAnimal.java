@@ -19,7 +19,6 @@ public class CadastroAnimal extends javax.swing.JFrame {
     public CadastroAnimal(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Cadastro cadastroJ;
@@ -196,11 +195,11 @@ Tutor t;
     }//GEN-LAST:event_RacaActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        controller.panelReturn(this);     // TODO add your handling code here:
+        controller.panelReturn();     // TODO add your handling code here:
     }//GEN-LAST:event_voltarActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**

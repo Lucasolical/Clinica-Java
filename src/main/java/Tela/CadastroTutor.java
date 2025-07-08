@@ -21,7 +21,6 @@ public class CadastroTutor extends javax.swing.JFrame {
     public CadastroTutor(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
     
     public CadastroTutor() {
@@ -72,6 +71,12 @@ public class CadastroTutor extends javax.swing.JFrame {
         jLabel3.setText("Email");
 
         jLabel4.setText("Telefone");
+
+        Nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomeActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Endereco");
 
@@ -232,7 +237,7 @@ public class CadastroTutor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
@@ -248,7 +253,7 @@ public class CadastroTutor extends javax.swing.JFrame {
             
         
     }//GEN-LAST:event_ConfirmarActionPerformed
-
+    
     private void NomeDogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeDogActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeDogActionPerformed
@@ -262,14 +267,21 @@ public class CadastroTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_RacaActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomeActionPerformed
     private void Limpar(){
         Email.setText("");
         Cpf.setText("");
         Nome.setText("");
         Telefone.setText("");
         Endereco.setText("");
+        NomeDog.setText("");
+        Raca.setText("");
+        Data.setText("");
     }
     /**
      * @param args the command line arguments

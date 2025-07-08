@@ -17,7 +17,6 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     public CancelarAgendamento(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Agendamento agendamentoJ;
@@ -229,7 +228,7 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void VoltarAgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarAgActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarAgActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -246,11 +245,11 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void VoltarAg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarAg1ActionPerformed
-       controller.panelReturn(this);
+       controller.panelReturn();
     }//GEN-LAST:event_VoltarAg1ActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
