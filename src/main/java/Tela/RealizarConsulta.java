@@ -14,12 +14,11 @@ public class RealizarConsulta extends javax.swing.JFrame {
     public RealizarConsulta(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     public RealizarConsulta() {
         initComponents();
-        this.controller.setPanel(this);
+        this.controller.startPanel(this);
     }
 
 
@@ -134,7 +133,7 @@ public class RealizarConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**

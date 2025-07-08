@@ -17,7 +17,6 @@ public class CadastroVet extends javax.swing.JFrame {
     public CadastroVet(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
    Cadastro CadJ;
@@ -243,7 +242,7 @@ public class CadastroVet extends javax.swing.JFrame {
     }//GEN-LAST:event_telefoneActionPerformed
 
     private void VoltarCVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCVetActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarCVetActionPerformed
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
@@ -255,7 +254,7 @@ public class CadastroVet extends javax.swing.JFrame {
     }//GEN-LAST:event_CadastrarActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
     private void Limpar(){
         email.setText("");

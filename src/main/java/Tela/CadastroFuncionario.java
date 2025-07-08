@@ -17,7 +17,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public CadastroFuncionario(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Cadastro cadastroJ;
@@ -225,11 +224,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_CpfActionPerformed
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {                                                                            

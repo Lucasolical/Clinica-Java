@@ -23,6 +23,16 @@ public class Tutor extends User
         animals.remove(animal);
     }
     
+    public Animal getAnimal(String name){
+        for(Animal a : animals){
+            if(name == a.name){
+                return a;
+            }
+        }
+
+        return null;
+    }
+
     public List<Animal>getAnimals(){
         return animals;
     }

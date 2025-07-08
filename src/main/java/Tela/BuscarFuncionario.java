@@ -21,7 +21,6 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     public BuscarFuncionario(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Busca buscaJ;
@@ -328,7 +327,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_especialidadeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

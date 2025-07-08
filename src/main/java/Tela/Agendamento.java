@@ -14,7 +14,6 @@ public class Agendamento extends javax.swing.JFrame {
     public Agendamento(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Menu menuJ;
@@ -127,24 +126,24 @@ public class Agendamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendarCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarCBActionPerformed
-        controller.panelSwitch(this, new Agendar());
+        controller.panelSwitch(new Agendar(controller));
 // TODO add your handling code here:
     }//GEN-LAST:event_AgendarCBActionPerformed
 
     private void VoltarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarMActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarMActionPerformed
 
     private void CandelarABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandelarABActionPerformed
-        controller.panelSwitch(this, new CancelarAgendamento());
+        controller.panelSwitch(new CancelarAgendamento(controller));
     }//GEN-LAST:event_CandelarABActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

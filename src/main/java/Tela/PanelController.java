@@ -1,5 +1,5 @@
 package Tela;
-import com.mycompany.clinicaveterinaria.Clinica;
+import com.mycompany.clinicaveterinaria.*;
 import javax.swing.JFrame;
 import java.util.*;
 import java.awt.*;
@@ -8,40 +8,62 @@ import java.lang.reflect.*;
 public class PanelController{
     public Clinica clinica = new Clinica();
     private Stack<Constructor<?>> paneHistory = new Stack<Constructor<?>>();
-    private Point lastFrameLocation = null;
+    public JFrame curPanel = null;
     
-    public void setPanel(JFrame panel){
+    private void startPanel(JFrame panel){
+        System.out.println("Starting the panel");
+        curPanel = panel;
         panel.setSize(500, 600);        
         panel.setResizable(false);       
         panel.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        if(lastFrameLocation != null)
-            panel.setLocation(lastFrameLocation.x, lastFrameLocation.y);
-        else
-            panel.setLocationRelativeTo(null);
+        panel.setLocationRelativeTo(null);
         panel.setAlwaysOnTop(true);
     }
 
-    public void panelSwitch(JFrame currentPanel, JFrame nextPanel){
-        lastFrameLocation = currentPanel.getLocation();
-        try{
-            nextPanel = nextPanel.getClass().getConstructor(PanelController.class).newInstance(this);
-        }catch(Throwable e){
-            System.out.println("Problema instanciando classe em panel switch.");
+    public void setPanel(JFrame panel){
+        System.out.println("Passed through the setpanel function");
+        if(curPanel == null){
+            startPanel(panel);
             return;
         }
+        panel.setSize(500, 600);        
+        panel.setResizable(false);       
+        panel.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        Point location = curPanel.getLocation();
+        panel.setLocationRelativeTo(null);
+        if(false)
+            panel.setLocation(location.x, location.y);
+        panel.setAlwaysOnTop(true);
+    }
 
+    public void setPanel(){
+        setPanel(curPanel);
+    }
+
+    public void panelSwitch(JFrame nextPanel){
+        if(curPanel == null){
+            System.out.println("Não há painel atual.");
+            return;
+        }
         try{
-            paneHistory.push(currentPanel.getClass().getConstructor(PanelController.class));
+            paneHistory.push(curPanel.getClass().getConstructor(PanelController.class));
         }catch(Throwable e){
             System.out.println("problem");
             return;
         }
 
+        curPanel.dispose();
+        curPanel = nextPanel;
+        setPanel(nextPanel);
         nextPanel.setVisible(true);
-        currentPanel.dispose();
     }
 
-    public void panelReturn(JFrame currentPanel){
+    public void panelReturn(){
+        if(curPanel == null){
+            System.out.println("Não há painel atual.");
+            return;
+        }
+
         Constructor<?> previousPanel;
         try{
             previousPanel = paneHistory.pop();
@@ -49,7 +71,6 @@ public class PanelController{
             System.out.println("Não há itens para dar pop no stack.");
             return;
         }
-        lastFrameLocation = currentPanel.getLocation();
         JFrame newPanel;
         try{
             newPanel = (JFrame)previousPanel.newInstance(this);
@@ -58,15 +79,23 @@ public class PanelController{
             return;
         }
 
+        curPanel.dispose();
+        curPanel = newPanel;
+        setPanel();
         newPanel.setVisible(true);
-        currentPanel.dispose();
     }
 
-    public void goHome(JFrame currentPanel){
-        lastFrameLocation = currentPanel.getLocation();
-        new Menu(this).setVisible(true);
-        currentPanel.dispose();
+    public void goHome(){
+        if(curPanel == null){
+            System.out.println("Não há painel atual.");
+            return;
+        }
+        JFrame newMenu = new Menu(this);
+        curPanel.dispose();
         paneHistory.clear();
+        curPanel = newMenu;
+        setPanel();
+        newMenu.setVisible(true);
     }
 }
 

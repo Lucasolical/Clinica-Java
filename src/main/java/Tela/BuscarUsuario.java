@@ -20,7 +20,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     public BuscarUsuario(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     Busca buscaJ;
@@ -202,11 +201,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarBActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -17,7 +17,6 @@ public class Menu extends javax.swing.JFrame {
     public Menu(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
     /**
      * Creates new form Menu
@@ -131,23 +130,23 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendamentoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoBActionPerformed
-        controller.panelSwitch(this, new Agendamento());
+        controller.panelSwitch(new Agendamento(controller));
     }//GEN-LAST:event_AgendamentoBActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        controller.panelSwitch(this, new AplicaçãoVacina());
+        controller.panelSwitch(new AplicaçãoVacina(controller));
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
-        controller.panelSwitch(this, new Cadastro());
+        controller.panelSwitch(new Cadastro(controller));
     }//GEN-LAST:event_CadastroActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        controller.panelSwitch(this, new Busca());
+        controller.panelSwitch(new Busca(controller));
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**

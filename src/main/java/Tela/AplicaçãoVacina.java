@@ -14,7 +14,6 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
     public AplicaçãoVacina(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
 
@@ -164,11 +163,11 @@ public class AplicaçãoVacina extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

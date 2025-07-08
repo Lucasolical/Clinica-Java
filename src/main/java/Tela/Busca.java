@@ -14,7 +14,6 @@ public class Busca extends javax.swing.JFrame {
     public Busca(PanelController controller){
         initComponents();
         this.controller = controller;
-        this.controller.setPanel(this);
     }
 
     BuscarFuncionario funcionario;
@@ -142,19 +141,19 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FuncionarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioBActionPerformed
-        controller.panelSwitch(this, new BuscarFuncionario());
+        controller.panelSwitch(new BuscarFuncionario());
     }//GEN-LAST:event_FuncionarioBActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        controller.panelReturn(this);
+        controller.panelReturn();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.goHome(this);
+        controller.goHome();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        controller.panelSwitch(this, new BuscarUsuario());
+        controller.panelSwitch(new BuscarUsuario());
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
