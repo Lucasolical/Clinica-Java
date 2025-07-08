@@ -4,6 +4,9 @@
  */
 package Tela;
 
+import com.mycompany.clinicaveterinaria.Tutor;
+import com.mycompany.clinicaveterinaria.User;
+import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +20,9 @@ public class Agendar extends javax.swing.JFrame {
     public Agendar(PanelController controller){
         initComponents();
         this.controller = controller;
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }  
     }
 
     Agendamento agendamentoJ;
@@ -26,6 +32,9 @@ public class Agendar extends javax.swing.JFrame {
     public Agendar() {
         initComponents();
         this.controller.setPanel(this);
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }
     }
 
     /**
@@ -41,10 +50,9 @@ public class Agendar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        cpf = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        BuscarTutor = new javax.swing.JToggleButton();
         AgendarB = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -52,6 +60,7 @@ public class Agendar extends javax.swing.JFrame {
         jComboBox5 = new javax.swing.JComboBox<>();
         VoltarAg = new javax.swing.JToggleButton();
         jButton3 = new javax.swing.JButton();
+        especialidade = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,9 +72,9 @@ public class Agendar extends javax.swing.JFrame {
 
         jLabel4.setText("Cpf do Tutor:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cpfActionPerformed(evt);
             }
         });
 
@@ -77,8 +86,13 @@ public class Agendar extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Buscar Tutor");
-        jToggleButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarTutor.setText("Buscar Tutor");
+        BuscarTutor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarTutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarTutorActionPerformed(evt);
+            }
+        });
 
         AgendarB.setText("Agendar");
         AgendarB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -90,7 +104,6 @@ public class Agendar extends javax.swing.JFrame {
 
         jLabel5.setText("Horario");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -127,6 +140,12 @@ public class Agendar extends javax.swing.JFrame {
             }
         });
 
+        especialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,15 +168,15 @@ public class Agendar extends javax.swing.JFrame {
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField3)
                                 .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1)))
+                                .addComponent(cpf)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton1))
+                        .addComponent(BuscarTutor))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(AgendarB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(VoltarAg, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(VoltarAg, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(84, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -172,16 +191,16 @@ public class Agendar extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
+                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarTutor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -203,9 +222,9 @@ public class Agendar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cpfActionPerformed
 
     private void AgendarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarBActionPerformed
         // TODO add your handling code here:
@@ -234,6 +253,20 @@ public class Agendar extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         controller.goHome();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BuscarTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarTutorActionPerformed
+        User user = controller.clinica.getUser(cpf.getText());  
+        if(user == null){
+           System.out.println("erro no user");
+           return;
+       }   
+        Tutor T = (Tutor)user;   
+        
+    }//GEN-LAST:event_BuscarTutorActionPerformed
+
+    private void especialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeActionPerformed
+               // TODO add your handling code here:
+    }//GEN-LAST:event_especialidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,7 +305,10 @@ public class Agendar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton AgendarB;
+    private javax.swing.JToggleButton BuscarTutor;
     private javax.swing.JToggleButton VoltarAg;
+    private javax.swing.JTextField cpf;
+    private javax.swing.JComboBox<String> especialidade;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -283,8 +319,5 @@ public class Agendar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

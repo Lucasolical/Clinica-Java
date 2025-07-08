@@ -36,7 +36,15 @@ public class Tutor extends User
     public List<Animal>getAnimals(){
         return animals;
     }
+    public Animal getAnimal(String name){
+        for(Animal a : animals){
+            if(name.equals(a.name)){
+                return a;
+            }
+        }
 
+        return null;
+    }
     String getAddress(){
         return address;
     }
