@@ -209,8 +209,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        controller.panelSwitch(this, new CadastroTutor());
+        controller.panelSwitch(new CadastroTutor(controller));
     }//GEN-LAST:event_editarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
