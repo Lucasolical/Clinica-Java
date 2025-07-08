@@ -27,7 +27,7 @@ public class Tutor extends User
         return animals;
     }
 
-    String getAddress(){
+    public String getAddress(){
         return address;
     }
 

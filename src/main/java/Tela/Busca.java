@@ -37,11 +37,11 @@ public class Busca extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        VoltarB = new javax.swing.JToggleButton();
         FuncionarioB = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jButton3 = new javax.swing.JButton();
+        voltarB = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,13 +67,6 @@ public class Busca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        VoltarB.setText("Voltar");
-        VoltarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         FuncionarioB.setText("Funcionario");
         FuncionarioB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +76,11 @@ public class Busca extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Buscar");
+        jLabel1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jLabel1PropertyChange(evt);
+            }
+        });
 
         jToggleButton3.setText("Usuario");
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -99,14 +97,17 @@ public class Busca extends javax.swing.JFrame {
             }
         });
 
+        voltarB.setText("Voltar");
+        voltarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -121,6 +122,10 @@ public class Busca extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(voltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +138,9 @@ public class Busca extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FuncionarioB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(voltarB)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,6 +161,14 @@ public class Busca extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         controller.panelSwitch(this, new BuscarUsuario());
     }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void voltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBActionPerformed
+        controller.panelReturn(this);     // TODO add your handling code here:
+    }//GEN-LAST:event_voltarBActionPerformed
+
+    private void jLabel1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1PropertyChange
 
     /**
      * @param args the command line arguments
@@ -194,12 +207,12 @@ public class Busca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton FuncionarioB;
-    private javax.swing.JToggleButton VoltarB;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JButton voltarB;
     // End of variables declaration//GEN-END:variables
 }
 
