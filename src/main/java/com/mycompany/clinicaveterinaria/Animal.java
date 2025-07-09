@@ -38,7 +38,7 @@ public class Animal
             Time vacinaTime = vacina.getDataDeValidade();
             vacinaTime.sub(currentTime);
             Time month = new Time();
-            month.setMonth((byte)1);
+            month.setMonthInMinutes((byte)1);
             if(vacinaTime.cmp(month) <= 0){
                 vacinasVelhas.add(vacina);
             }

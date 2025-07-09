@@ -1,13 +1,17 @@
 package com.mycompany.clinicaveterinaria;
 
 public class Agendamento{
-    Time dateAndTime;
+    Time dateAndTime = new Time();
     Specialty specialty;
     Animal animal;
 
     public Agendamento(Specialty specialty, Time dateAndTime, Animal animal){
+        if(dateAndTime == null){
+            System.out.println("Horário nulo");
+            return;
+        }
         this.specialty = specialty;
-        this.dateAndTime = dateAndTime;
+        this.dateAndTime.time = dateAndTime.time;
         this.animal = animal;
     }
 
