@@ -23,6 +23,10 @@ public class Time
         this.time = time.time;
     }
 
+    public Time(String str){
+        stringToInt(str);
+    }
+
     public int cmp(Time time){
         if(this.time > time.getTime()){
             return 1;
@@ -136,8 +140,41 @@ public class Time
         time += minute;
     }
     public void print(){
-        System.out.println(getYearInMinutes() + "/" + getMonthInMinutes() + "/" + getDayInMinutes() + " " + getHourInMinutes() + ":" + getMinute());
+        System.out.println(toString());
     }
+
+    public String toString(){
+        return new String(getYearInMinutes() + "/" + getMonthInMinutes() + "/" + getDayInMinutes() + " " + getHourInMinutes() + ":" + getMinute());
+    }
+
+    public void stringToInt(String str) {
+        try {
+            String[] parts = str.split(" ");
+            if (parts.length != 2) {
+                System.out.println("Formato inválido.");
+                return;
+            }
+
+            String[] dateParts = parts[0].split("/");
+            String[] timeParts = parts[1].split(":");
+
+            if (dateParts.length != 3 || timeParts.length != 2) {
+                System.out.println("Formato inválido");
+                return;
+            }
+
+            // Reset and set all components
+            this.time = 0;
+            setYearInMinutes(Long.parseLong(dateParts[0]));
+            setMonthInMinutes(Long.parseLong(dateParts[1]));
+            setDayInMinutes(Long.parseLong(dateParts[2]));
+            setHourInMinutes(Long.parseLong(timeParts[0]));
+            setMinute(Long.parseLong(timeParts[1]));
+
+        } catch (NumberFormatException e) {
+            System.out.println("Failed to parse time string: " + e.getMessage());
+        }
+}
 
     @Override
     public Object clone() throws CloneNotSupportedException{

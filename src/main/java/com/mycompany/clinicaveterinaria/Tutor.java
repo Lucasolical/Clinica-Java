@@ -22,7 +22,7 @@ public class Tutor extends User
     public void removeAnimal(Animal animal){
         animals.remove(animal);
     }
-    
+
     public Animal getAnimal(String name){
         for(Animal a : animals){
             if(name == a.name){

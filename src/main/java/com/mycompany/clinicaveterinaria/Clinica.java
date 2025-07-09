@@ -127,6 +127,12 @@ public class Clinica {
         return null;
     }
 
+    public void cancelarAgendamento(Time time){
+        Agendamento a = getAgendamento(time);
+        if(a != null)
+            agendamentos.remove(a);
+    }
+
     public boolean criarConsulta(Animal animal, Veterinario veterinario, String problema, 
             String diagnostico, List<String> medicamentos, Time dateAndTime) 
     {
@@ -147,6 +153,17 @@ public class Clinica {
         consultas.add(consulta);
 
         return true;
+    }
+
+    public List<Agendamento> getTutorAgendamentos(Tutor tutor){
+        List<Agendamento> localAgendamentos = new ArrayList<>();
+        for(Agendamento a : agendamentos){
+            if(a.animal.tutor == tutor){
+                localAgendamentos.add(a);
+            }
+        }
+
+        return localAgendamentos;
     }
 
     public Consulta getConsulta(Time dateAndTime){
