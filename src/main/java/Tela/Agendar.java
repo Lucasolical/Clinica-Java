@@ -151,7 +151,7 @@ public class Agendar extends javax.swing.JFrame {
         jButton1.setText("horários");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                acharHorarios(evt);
             }
         });
 
@@ -314,19 +314,25 @@ public class Agendar extends javax.swing.JFrame {
         {
             System.out.println("Erro criando agendamento. Erro mais provavel é horário não livre");
         }
+        acharHorariosBackEnd();
 
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    //
+    private void acharHorariosBackEnd(){
         Time time = new Time();
         time.setYearInMinutes(controller.clinica.currentTime.getYearInMinutes());
         time.setMonthInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
         time.setDayInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
+        time.print();
 
         timeBox.removeAllItems();
         for(Time s : controller.clinica.getFreeTimes(time)){
             timeBox.addItem(Long.toString(s.getHourInMinutes()) + ":" + Long.toString(s.getMinute()));
         }
+    }
+
+    private void acharHorarios(java.awt.event.ActionEvent evt) {                                         
+        acharHorariosBackEnd();
     }
 
     /**
