@@ -41,7 +41,7 @@ public class Tutor extends User
         return address;
     }
 
-    void setAddress(String address){
+    public void setAddress(String address){
         this.address = address;
     }
 }

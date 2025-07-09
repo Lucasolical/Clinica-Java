@@ -17,16 +17,58 @@ public class CadastroTutor extends javax.swing.JFrame {
     Tutor newTutor;
     Animal newAnimal;
     PanelController controller ;
-
+    int set;
+    //cadastrar Tutor
     public CadastroTutor(PanelController controller){
         initComponents();
         this.controller = controller;
+        set = 1;
     }
     
     public CadastroTutor() {
         initComponents();
         this.controller = new PanelController();
         this.controller.setPanel(this);
+        set = 1;
+    }
+    //Adicionar animal
+    public CadastroTutor(PanelController controller, Tutor tut){
+        initComponents();
+        newTutor = tut;
+        this.controller = controller;
+        newTutor = tut;
+        Nome.setEnabled(false);
+        Titulo.setText("Adicionar Animal");
+        Subtitulo.setText("");
+        Email.setEnabled(false);
+        Cpf.setEnabled(false);
+        Telefone.setEnabled(false);
+        Endereco.setEnabled(false);
+        n.setEnabled(false);
+        e.setEnabled(false);
+        c.setEnabled(false);
+        t.setEnabled(false);
+        en.setEnabled(false);
+        set = 2;
+    }
+    //Editar Tutor e animal
+    public CadastroTutor(PanelController controller, Tutor tut, Animal an){
+        initComponents();
+        Titulo.setText("Editar");
+        Subtitulo.setText("");
+        newTutor = tut;
+        newAnimal = an;
+        this.controller = controller;
+        set = 3;
+        Nome.setText(newTutor.getName());
+        Email.setText(newTutor.getEmail());
+        Cpf.setText(newTutor.getCpf());
+        Telefone.setText(newTutor.getPhoneNumber());
+        Endereco.setText(newTutor.getAddress());
+        NomeDog.setText(newAnimal.getName());
+        Raca.setText(newAnimal.getRace());
+        Data.setText(newAnimal.getBirthDate());
+        
     }
 
 
@@ -41,21 +83,21 @@ public class CadastroTutor extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        n = new javax.swing.JLabel();
+        c = new javax.swing.JLabel();
+        e = new javax.swing.JLabel();
+        t = new javax.swing.JLabel();
         Nome = new javax.swing.JTextField();
         Cpf = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Telefone = new javax.swing.JTextField();
         Endereco = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        en = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         VoltarC = new javax.swing.JToggleButton();
         homeButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        Subtitulo = new javax.swing.JLabel();
         NomeDog = new javax.swing.JTextField();
         Data = new javax.swing.JTextField();
         Raca = new javax.swing.JTextField();
@@ -65,13 +107,13 @@ public class CadastroTutor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nome");
+        n.setText("Nome");
 
-        jLabel2.setText("Cpf");
+        c.setText("Cpf");
 
-        jLabel3.setText("Email");
+        e.setText("Email");
 
-        jLabel4.setText("Telefone");
+        t.setText("Telefone");
 
         Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +121,7 @@ public class CadastroTutor extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Endereco");
+        en.setText("Endereco");
 
         Confirmar.setText("Confirmar");
         Confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +130,8 @@ public class CadastroTutor extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel6.setText("Cadastro de Tutor");
+        Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        Titulo.setText("Cadastro de Tutor");
 
         VoltarC.setText("Voltar");
         VoltarC.addActionListener(new java.awt.event.ActionListener() {
@@ -106,8 +148,8 @@ public class CadastroTutor extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setText("Cadastro de Animal");
+        Subtitulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Subtitulo.setText("Cadastro de Animal");
 
         NomeDog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +185,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(Titulo)
                                 .addGap(73, 73, 73)
                                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(Confirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -152,11 +194,11 @@ public class CadastroTutor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
+                                    .addComponent(en)
+                                    .addComponent(n)
+                                    .addComponent(e, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(t))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
@@ -180,7 +222,7 @@ public class CadastroTutor extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
+                .addComponent(Subtitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,32 +231,32 @@ public class CadastroTutor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(homeButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(n)
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(e))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(c))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(t))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(en))
                 .addGap(68, 68, 68)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Subtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -242,13 +284,32 @@ public class CadastroTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarCActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
-        newTutor = new Tutor(Nome.getText(), Email.getText(), Endereco.getText(), Telefone.getText(), Cpf.getText());
-        if(!controller.clinica.signUser(newTutor)){
+        if(set == 1){
+           newTutor = new Tutor(Nome.getText(), Email.getText(), Endereco.getText(), Telefone.getText(), Cpf.getText());
+            if(!controller.clinica.signUser(newTutor)){
             System.out.println("Erro tentando criar um novo usuário");
             return;
+            }
+            newAnimal = new Animal(NomeDog.getText(),Raca.getText(), Data.getText());
+            newTutor.addAnimal(newAnimal); 
         }
-        newAnimal = new Animal(NomeDog.getText(),Raca.getText(), Data.getText());
-        newTutor.addAnimal(newAnimal);
+        else if(set == 2){
+            newAnimal = new Animal(NomeDog.getText(),Raca.getText(), Data.getText());
+            newTutor.addAnimal(newAnimal);
+            controller.panelSwitch(new BuscarUsuario(controller));
+        }
+        else if(set == 3){
+            newTutor.setName(Nome.getText());
+            newTutor.setEmail(Email.getText());
+            newTutor.setCpf(Cpf.getText());
+            newTutor.setPhoneNumber(Telefone.getText());
+            newTutor.setAddress(Endereco.getText());
+            newAnimal.setName(NomeDog.getText());
+            newAnimal.setRace(Raca.getText());
+            newAnimal.setBirthDate(Data.getText());
+            controller.panelSwitch(new BuscarUsuario(controller));
+        }
+            
         Limpar();
         
             
@@ -328,20 +389,20 @@ public class CadastroTutor extends javax.swing.JFrame {
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField NomeDog;
     private javax.swing.JTextField Raca;
+    private javax.swing.JLabel Subtitulo;
     private javax.swing.JTextField Telefone;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JToggleButton VoltarC;
+    private javax.swing.JLabel c;
+    private javax.swing.JLabel e;
+    private javax.swing.JLabel en;
     private javax.swing.JButton homeButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel n;
+    private javax.swing.JLabel t;
     // End of variables declaration//GEN-END:variables
 }

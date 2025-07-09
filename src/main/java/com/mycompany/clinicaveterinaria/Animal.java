@@ -63,4 +63,14 @@ public class Animal
     public Tutor getTutor(){
         return tutor;
     }
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public void setRace(String race){
+        this.race = race;
+    }
+    public void setBirthDate(String birthDate){
+        this.birthDate = birthDate;
+    }
 }

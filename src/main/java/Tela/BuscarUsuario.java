@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class BuscarUsuario extends javax.swing.JFrame {
     PanelController controller = new PanelController();
+    Tutor tut = null;
 
     public BuscarUsuario(PanelController controller){
         initComponents();
@@ -49,7 +50,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
         consultar = new javax.swing.JToggleButton();
         VoltarB = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
-        editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +97,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
             }
         });
 
-        editar.setText("editar");
-        editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,8 +125,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addComponent(consultar)
-                                .addGap(18, 18, 18)
-                                .addComponent(editar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)))))
@@ -161,8 +152,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VoltarB, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
@@ -174,30 +164,25 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfActionPerformed
 
     private void BuscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarBActionPerformed
-        User user = controller.clinica.getUser(cpf.getText());  
+        User user = controller.clinica.getUser(cpf.getText()); 
+        tut = (Tutor)user;
         if(user == null){
            System.out.println("erro no user");
            return;
-       }   
+       }
         Tutor T = (Tutor)user;
         Animais.removeAllItems();
         for(Animal a: T.getAnimals()){
-            Animais.addItem(a.getName());
-            
+            Animais.addItem(a.getName()); 
         } 
+        
     }//GEN-LAST:event_BuscarBActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
-        User user = controller.clinica.getUser(cpf.getText());  
-        if(user == null){
-           System.out.println("erro no user");
-           return;
-       }   
-        Tutor T = (Tutor)user;
-        Animais.removeAllItems();
-        for(Animal a: T.getAnimals()){
-            Animais.addItem(a.getName());
-        } 
+        if(tut== null){
+            return;
+        }
+        controller.panelSwitch(new ResultadoEditarUsuario(controller, tut.getAnimal(Animais.getSelectedItem().toString())));
     }//GEN-LAST:event_consultarActionPerformed
 
     private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
@@ -207,10 +192,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         controller.goHome();
     }//GEN-LAST:event_homeButtonActionPerformed
-
-    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        controller.panelSwitch(new CadastroTutor(controller));
-    }//GEN-LAST:event_editarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -256,7 +237,6 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton VoltarB;
     private javax.swing.JToggleButton consultar;
     private javax.swing.JTextField cpf;
-    private javax.swing.JButton editar;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
