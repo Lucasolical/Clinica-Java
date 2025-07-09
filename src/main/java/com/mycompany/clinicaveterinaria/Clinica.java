@@ -118,7 +118,7 @@ public class Clinica {
     public Agendamento getAgendamento(Time dateAndTime){
         for(Agendamento agendamento : agendamentos)
         {
-            if(agendamento.dateAndTime == dateAndTime)
+            if(agendamento.dateAndTime.time == dateAndTime.time)
             {
                 return agendamento;
             }

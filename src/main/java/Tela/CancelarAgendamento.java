@@ -191,8 +191,11 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        if(tutor == null)return;
+        System.out.println("Vacina removida");
         Time time = new Time(dateBox.getSelectedItem().toString());
         controller.clinica.cancelarAgendamento(time);
+        updateDates();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void VoltarAgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarAgActionPerformed
@@ -200,7 +203,7 @@ public class CancelarAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarAgActionPerformed
 
     private void updateDates(){
-        dateBox.removeAll();
+        dateBox.removeAllItems();
         if(tutor == null)return;
         for(com.mycompany.clinicaveterinaria.Agendamento a : controller.clinica.getTutorAgendamentos(tutor)){
             dateBox.addItem(a.getDateAndTime().toString());
