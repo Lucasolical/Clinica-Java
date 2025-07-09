@@ -20,6 +20,8 @@ import java.util.Set;
  */
 public class Agendar extends javax.swing.JFrame {
     PanelController controller = new PanelController();
+    final long defaultYear = controller.clinica.currentTime.getYearInMinutes();
+    Tutor curTutor;
 
     public Agendar(PanelController controller){
         initComponents();
@@ -50,6 +52,7 @@ public class Agendar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -57,7 +60,6 @@ public class Agendar extends javax.swing.JFrame {
         cpf = new javax.swing.JTextField();
         timeBox = new javax.swing.JComboBox<>();
         BuscarTutor = new javax.swing.JToggleButton();
-        AgendarB = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         animais = new javax.swing.JComboBox<>();
         dayBox = new javax.swing.JComboBox<>();
@@ -66,6 +68,9 @@ public class Agendar extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         especialidade = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,14 +101,6 @@ public class Agendar extends javax.swing.JFrame {
         BuscarTutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarTutorActionPerformed(evt);
-            }
-        });
-
-        AgendarB.setText("Agendar");
-        AgendarB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        AgendarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgendarBActionPerformed(evt);
             }
         });
 
@@ -158,6 +155,13 @@ public class Agendar extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Agendar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,11 +196,11 @@ public class Agendar extends javax.swing.JFrame {
                                         .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(1, 1, 1))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addComponent(AgendarB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(106, 106, 106)
+                                .addGap(81, 81, 81)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
                                 .addComponent(VoltarAg, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 55, Short.MAX_VALUE))
+                        .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -227,16 +231,15 @@ public class Agendar extends javax.swing.JFrame {
                         .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(monthBox)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(dayBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgendarB, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(VoltarAg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                    .addComponent(jLabel1)
+                    .addComponent(dayBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monthBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VoltarAg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -245,9 +248,6 @@ public class Agendar extends javax.swing.JFrame {
     private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfActionPerformed
-
-    private void AgendarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarBActionPerformed
-    }//GEN-LAST:event_AgendarBActionPerformed
 
     private void animaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animaisActionPerformed
         // TODO add your handling code here:
@@ -275,6 +275,7 @@ public class Agendar extends javax.swing.JFrame {
 
     private void BuscarTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarTutorActionPerformed
         User user = controller.clinica.getUser(cpf.getText());  
+        curTutor = (Tutor)user;
         if(user == null){
            System.out.println("erro no user");
            return;
@@ -284,7 +285,6 @@ public class Agendar extends javax.swing.JFrame {
         animais.removeAllItems();
         for(Animal a: T.getAnimals()){
             animais.addItem(a.getName());
-            
         }   
         
     }//GEN-LAST:event_BuscarTutorActionPerformed
@@ -293,14 +293,39 @@ public class Agendar extends javax.swing.JFrame {
                // TODO add your handling code here:
     }//GEN-LAST:event_especialidadeActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(curTutor == null)return;
+        Time time = new Time();
+        time.setYearInMinutes(defaultYear);
+        time.setMonthInMinutes(Long.parseLong(monthBox.getSelectedItem().toString()));
+        time.setDayInMinutes(Long.parseLong(dayBox.getSelectedItem().toString()));
+
+        String[] parts = timeBox.getSelectedItem().toString().split(":");
+
+        time.setHourInMinutes(Integer.parseInt(parts[0]));
+        time.setMinute(Integer.parseInt(parts[1]));
+        System.out.println(Integer.parseInt(parts[0]));
+        System.out.println(Integer.parseInt(parts[1]));
+        time.print();
+
+        if(!controller.clinica.agendar(controller.clinica.getSpecialty(especialidade.getSelectedItem().toString()), 
+                time,
+                curTutor.getAnimal(animais.getSelectedItem().toString())))
+        {
+            System.out.println("Erro criando agendamento. Erro mais provavel é horário não livre");
+        }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         Time time = new Time();
-        time.setYear(controller.clinica.currentTime.getYear());
-        time.setMonth(Integer.parseInt(dayBox.getSelectedItem().toString()));
-        time.setDay(Integer.parseInt(dayBox.getSelectedItem().toString()));
+        time.setYearInMinutes(controller.clinica.currentTime.getYearInMinutes());
+        time.setMonthInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
+        time.setDayInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
 
+        timeBox.removeAllItems();
         for(Time s : controller.clinica.getFreeTimes(time)){
-            timeBox.addItem(Long.toString(s.getHour()) + ":" + Long.toString(s.getMinute()));
+            timeBox.addItem(Long.toString(s.getHourInMinutes()) + ":" + Long.toString(s.getMinute()));
         }
     }
 
@@ -340,7 +365,6 @@ public class Agendar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton AgendarB;
     private javax.swing.JToggleButton BuscarTutor;
     private javax.swing.JToggleButton VoltarAg;
     private javax.swing.JComboBox<String> animais;
@@ -348,7 +372,9 @@ public class Agendar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dayBox;
     private javax.swing.JComboBox<String> especialidade;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

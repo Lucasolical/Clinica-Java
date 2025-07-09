@@ -82,13 +82,19 @@ public class Clinica {
     }
 
     public boolean agendar(Specialty specialty, Time dateAndTime, Animal animal) {
+        if(dateAndTime == null){
+            System.out.println("Data é nulo");
+            return false;
+        }
         if(dateAndTime.time < currentTime.time){
             System.out.println("Data inválida.");
+            currentTime.print();
+            dateAndTime.print();
             return false;
         }
         if(dateAndTime.getMinute()%20 != 0 ||
-            !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12 ||
-            dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
+            !(dateAndTime.getHourInMinutes() >= 8 && dateAndTime.getHourInMinutes() <= 12 ||
+            dateAndTime.getHourInMinutes() >= 14 && dateAndTime.getHourInMinutes() <= 18))
         {
             System.out.println("Hora inválida.");
             return false;
@@ -122,8 +128,8 @@ public class Clinica {
             String diagnostico, List<String> medicamentos, Time dateAndTime) 
     {
         if(dateAndTime.getMinute()%20 != 0 ||
-            !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12) ||
-            !(dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
+            !(dateAndTime.getHourInMinutes() >= 8 && dateAndTime.getHourInMinutes() <= 12) ||
+            !(dateAndTime.getHourInMinutes() >= 14 && dateAndTime.getHourInMinutes() <= 18))
         {
             return false;
         }
@@ -172,13 +178,13 @@ public class Clinica {
 
     //A parte das horas vão ser ignoradas
     public List<Time> getFreeTimes(Time time){
-        time.setHour(0);
+        time.setHourInMinutes(0);
         time.setMinute(0);
         List<Time> allTimes = new ArrayList<Time>();
         Time firstBreak = new Time(time);
-        firstBreak.setHour(12);
+        firstBreak.setHourInMinutes(12);
         Time curTime = new Time(time);
-        for(curTime.setHour(8);
+        for(curTime.setHourInMinutes(8);
                 curTime.time < firstBreak.time;
                 curTime.addMinutes(20))
         {
@@ -189,8 +195,8 @@ public class Clinica {
         time.setMinute(0);
 
         Time secondBreak = new Time(time);
-        secondBreak.setHour(18);
-        for(curTime.setHour(14);
+        secondBreak.setHourInMinutes(18);
+        for(curTime.setHourInMinutes(14);
             curTime.time  < firstBreak.time;
             curTime.addMinutes(20))
         {
@@ -269,7 +275,7 @@ public class Clinica {
 
        List<Tutor> tutores = new ArrayList<Tutor>();
        tutores.add(new Tutor("marcos", "marcos@gmal.com", 
-                   "São paulo", "71994404034", "7040181870"));
+                   "São paulo", "71994404034", "123"));
        tutores.add(new Tutor("antônio", "antonio@gmal.com", 
                    "Rio de janeiro - copacabana", "71894214334", "7941181270"));
        tutores.add(new Tutor("Julia", "julia@gmal.com", 

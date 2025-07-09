@@ -3,19 +3,19 @@ package com.mycompany.clinicaveterinaria;
 public class Time 
 {
     public long time = 0;
-    final long hour = 60;
-    final long day = 24 * hour;
-    final long month = 30 * day;
-    final long year = 365 * day;
+    final long hourInMinutes = 60;
+    final long dayInMinutes = 24 * hourInMinutes;
+    final long monthInMinutes = 30 * dayInMinutes;
+    final long yearInMinutes = 365 * dayInMinutes;
 
     public Time(){
     }
 
     public Time(long year, long month, long day, long hour, long minutes){
-        setYear(year);
-        setMonth(month);
-        setDay(day);
-        setHour(hour);
+        setYearInMinutes(year);
+        setMonthInMinutes(month);
+        setDayInMinutes(day);
+        setHourInMinutes(hour);
         setMinute(minutes);
     }
 
@@ -51,21 +51,21 @@ public class Time
     }
 
     public void addYears(long years){
-        years *= year;
+        years *= yearInMinutes;
         if(time + years < 0)
             return;
         time += years;
     }
 
     public void addMonths(long months){
-        months *= month;
+        months *= monthInMinutes;
         if(time + months < 0)
             return;
         time += months;
     }
 
     public void addDays(long days){
-        days *= day;
+        days *= dayInMinutes;
         if(time + days < 0)
             return;
         time += days;
@@ -80,45 +80,54 @@ public class Time
     public long getTime(){
         return time;
     }
-    public long getYear() {
-        return time/year;
-    }
-    public long getMonth() {
-        return (time - (time/year) * year)/month;
-    }
-    public long getDay() {
-        return (time - (time/month) * month)/day;
-    }
-    public long getHour() {
-        return (time - (time/day) * day)/hour;
-    }
-    public long getMinute() {
-        return (time - (time/hour) * hour);
+
+    public long getYearInMinutes() {
+        return time / yearInMinutes;
     }
 
-    public void setYear(long year) {
+    public long getMonthInMinutes() {
+        return (time % yearInMinutes) / monthInMinutes;
+    }
+
+    public long getDayInMinutes() {
+        return (time % yearInMinutes % monthInMinutes) / dayInMinutes;
+    }
+
+    public long getHourInMinutes() {
+        return (time % yearInMinutes % monthInMinutes % dayInMinutes) / hourInMinutes;
+    }
+
+    public long getMinute() {
+        return time % hourInMinutes;
+    }
+
+    public void setYearInMinutes(long year) {
         if(year < 0)
             return;
-        time -= getYear() * this.year;
-        time += year * this.year;
+        System.out.println(year);
+        System.out.println("Year in minutes: " + getYearInMinutes());
+        time -= getYearInMinutes() * this.yearInMinutes;
+        time += year * this.yearInMinutes;
+        print();
+
     }
-    public void setMonth(long month) {
+    public void setMonthInMinutes(long month) {
         if(month < 0)
             return;
-        time -= getMonth() * this.month;
-        time += month* this.month;
+        time -= getMonthInMinutes() * this.monthInMinutes;
+        time += month* this.monthInMinutes;
     }
-    public void setDay(long day){
+    public void setDayInMinutes(long day){
         if(day < 0)
             return;
-        time -= getDay() * this.day;
-        time += day * this.day;
+        time -= getDayInMinutes() * this.dayInMinutes;
+        time += day * this.dayInMinutes;
     }
-    public void setHour(long hour) {
+    public void setHourInMinutes(long hour) {
         if(hour < 0)
             return;
-        time -= getHour() * this.hour;
-        time += hour * this.hour;
+        time -= getHourInMinutes() * this.hourInMinutes;
+        time += hour * this.hourInMinutes;
     }
     public void setMinute(long minute) {
         if(minute < 0)
@@ -127,7 +136,7 @@ public class Time
         time += minute;
     }
     public void print(){
-        System.out.println(getYear() + "/" + getMonth() + "/" + getDay() + " " + getHour() + ":" + getMinute());
+        System.out.println(getYearInMinutes() + "/" + getMonthInMinutes() + "/" + getDayInMinutes() + " " + getHourInMinutes() + ":" + getMinute());
     }
 
     @Override
