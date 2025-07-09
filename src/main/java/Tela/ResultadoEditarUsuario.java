@@ -15,6 +15,8 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
     Animal newAnimal;
     Animal an = null;
     Tutor tu = null;
+    CadastroTutor cadT;
+    BuscarUsuario buscU;
     public ResultadoEditarUsuario(PanelController controller){
         initComponents();
         this.controller = controller;
@@ -74,7 +76,7 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
         Voltar = new javax.swing.JToggleButton();
         homeButton = new javax.swing.JButton();
         EmitirVacina = new javax.swing.JToggleButton();
-        Adicionar2 = new javax.swing.JToggleButton();
+        VerificarCosulta = new javax.swing.JToggleButton();
         Excluir = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,10 +144,10 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        Adicionar2.setText("Verificar Consultas");
-        Adicionar2.addActionListener(new java.awt.event.ActionListener() {
+        VerificarCosulta.setText("Verificar Consultas");
+        VerificarCosulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Adicionar2ActionPerformed(evt);
+                VerificarCosultaActionPerformed(evt);
             }
         });
 
@@ -195,7 +197,7 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(EmitirVacina, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Adicionar2)
+                .addComponent(VerificarCosulta)
                 .addGap(12, 12, 12))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -238,7 +240,7 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
                     .addComponent(Editar))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Adicionar2)
+                    .addComponent(VerificarCosulta)
                     .addComponent(Adicionar)
                     .addComponent(EmitirVacina))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
@@ -255,7 +257,9 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
         if(an== null){
             return;
         }
-        controller.panelSwitch(new CadastroTutor(controller, tu));        // TODO add your handling code here:
+        cadT = new CadastroTutor(controller, tu); 
+        cadT.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_AdicionarActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
@@ -271,20 +275,24 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_AnimaisActionPerformed
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-        controller.panelReturn();        
+        buscU = new BuscarUsuario();
+        buscU.setVisible(true);
+        this.dispose();       
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        controller.panelSwitch(new CadastroTutor(controller, tu, tu.getAnimal(Animais.getSelectedItem().toString())));        
+        cadT = new CadastroTutor(controller, tu, tu.getAnimal(Animais.getSelectedItem().toString())); 
+        cadT.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_EditarActionPerformed
 
     private void EmitirVacinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmitirVacinaActionPerformed
         controller.panelSwitch(new EmitirCVacina(tu.getAnimal(Animais.getSelectedItem().toString())));
     }//GEN-LAST:event_EmitirVacinaActionPerformed
 
-    private void Adicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Adicionar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Adicionar2ActionPerformed
+    private void VerificarCosultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarCosultaActionPerformed
+        
+    }//GEN-LAST:event_VerificarCosultaActionPerformed
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
         controller.clinica.deleteUser(tu);                // TODO add your handling code here:
@@ -330,7 +338,6 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Adicionar;
-    private javax.swing.JToggleButton Adicionar2;
     private javax.swing.JComboBox<String> Animais;
     private javax.swing.JTextField Cpf;
     private javax.swing.JToggleButton Editar;
@@ -340,6 +347,7 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
     private javax.swing.JToggleButton Excluir;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Telefone;
+    private javax.swing.JToggleButton VerificarCosulta;
     private javax.swing.JToggleButton Voltar;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;

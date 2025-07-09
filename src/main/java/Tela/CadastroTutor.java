@@ -14,6 +14,7 @@ import com.mycompany.clinicaveterinaria.Tutor;
  */
 public class CadastroTutor extends javax.swing.JFrame {
     Cadastro cadastroJ;
+    BuscarUsuario buscU;
     Tutor newTutor;
     Animal newAnimal;
     PanelController controller ;
@@ -280,6 +281,21 @@ public class CadastroTutor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCActionPerformed
+        if(set == 1){
+            cadastroJ = new Cadastro();
+            cadastroJ.setVisible(true);
+            this.dispose();
+        }
+        else if(set == 2){
+            buscU = new BuscarUsuario(controller);
+            buscU.setVisible(true);
+            this.dispose();
+        }
+        else{
+            buscU = new BuscarUsuario(controller);
+            buscU.setVisible(true);
+            this.dispose();
+        }
         controller.panelReturn();
     }//GEN-LAST:event_VoltarCActionPerformed
 
@@ -296,7 +312,9 @@ public class CadastroTutor extends javax.swing.JFrame {
         else if(set == 2){
             newAnimal = new Animal(NomeDog.getText(),Raca.getText(), Data.getText());
             newTutor.addAnimal(newAnimal);
-            controller.panelSwitch(new BuscarUsuario(controller));
+            buscU = new BuscarUsuario(controller);
+            buscU.setVisible(true);
+            this.dispose();
         }
         else if(set == 3){
             newTutor.setName(Nome.getText());
@@ -307,7 +325,9 @@ public class CadastroTutor extends javax.swing.JFrame {
             newAnimal.setName(NomeDog.getText());
             newAnimal.setRace(Raca.getText());
             newAnimal.setBirthDate(Data.getText());
-            controller.panelSwitch(new BuscarUsuario(controller));
+            buscU = new BuscarUsuario(controller);
+            buscU.setVisible(true);
+            this.dispose();
         }
             
         Limpar();
