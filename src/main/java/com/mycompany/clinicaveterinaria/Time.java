@@ -85,19 +85,19 @@ public class Time
         return time;
     }
 
-    public long getYearInMinutes() {
+    public long getYear() {
         return time / yearInMinutes;
     }
 
-    public long getMonthInMinutes() {
+    public long getMonth() {
         return (time % yearInMinutes) / monthInMinutes;
     }
 
-    public long getDayInMinutes() {
+    public long getDay() {
         return (time % yearInMinutes % monthInMinutes) / dayInMinutes;
     }
 
-    public long getHourInMinutes() {
+    public long getHour() {
         return (time % yearInMinutes % monthInMinutes % dayInMinutes) / hourInMinutes;
     }
 
@@ -109,8 +109,8 @@ public class Time
         if(year < 0)
             return;
         System.out.println(year);
-        System.out.println("Year in minutes: " + getYearInMinutes());
-        time -= getYearInMinutes() * this.yearInMinutes;
+        System.out.println("Year in minutes: " + getYear());
+        time -= getYear() * this.yearInMinutes;
         time += year * this.yearInMinutes;
         print();
 
@@ -118,19 +118,19 @@ public class Time
     public void setMonthInMinutes(long month) {
         if(month < 0)
             return;
-        time -= getMonthInMinutes() * this.monthInMinutes;
+        time -= getMonth() * this.monthInMinutes;
         time += month* this.monthInMinutes;
     }
     public void setDayInMinutes(long day){
         if(day < 0)
             return;
-        time -= getDayInMinutes() * this.dayInMinutes;
+        time -= getDay() * this.dayInMinutes;
         time += day * this.dayInMinutes;
     }
     public void setHourInMinutes(long hour) {
         if(hour < 0)
             return;
-        time -= getHourInMinutes() * this.hourInMinutes;
+        time -= getHour() * this.hourInMinutes;
         time += hour * this.hourInMinutes;
     }
     public void setMinute(long minute) {
@@ -144,7 +144,7 @@ public class Time
     }
 
     public String toString(){
-        return new String(getYearInMinutes() + "/" + getMonthInMinutes() + "/" + getDayInMinutes() + " " + getHourInMinutes() + ":" + getMinute());
+        return new String(getYear() + "/" + getMonth() + "/" + getDay() + " " + getHour() + ":" + getMinute());
     }
 
     public void stringToInt(String str) {

@@ -53,6 +53,18 @@ public class Clinica {
 
         return null;
     }
+    public Veterinario getVet(String s){
+        for (User a : users) {
+            if (a instanceof Veterinario) {
+                Veterinario vet = (Veterinario) a;
+                if(vet.getName() == s){
+                    return vet;
+                }
+            }
+        }
+
+        return null;
+    }
 
     public Vacina getVacina(String vacina){
         for(Vacina vac : tiposVacinas){
@@ -109,8 +121,8 @@ public class Clinica {
             return false;
         }
         if(dateAndTime.getMinute()%20 != 0 ||
-            !(dateAndTime.getHourInMinutes() >= 8 && dateAndTime.getHourInMinutes() <= 12 ||
-            dateAndTime.getHourInMinutes() >= 14 && dateAndTime.getHourInMinutes() <= 18))
+            !(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12 ||
+            dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18))
         {
             System.out.println("Hora inválida.");
             return false;
@@ -146,22 +158,35 @@ public class Clinica {
             agendamentos.remove(a);
     }
 
+    public List<Veterinario> getVets(){
+        List<Veterinario> vets = new ArrayList<>();
+        for (User a : users) {
+            if (a instanceof Veterinario) {
+                vets.add((Veterinario)a);
+            }
+        }
+
+        return vets;
+    }
+
     public boolean criarConsulta(Animal animal, Veterinario veterinario, String problema, 
-            String diagnostico, List<String> medicamentos, Time dateAndTime) 
+            String diagnostico, String medicamentos, Time dateAndTime) 
     {
         if(dateAndTime.getMinute()%20 != 0 ||
-            !(dateAndTime.getHourInMinutes() >= 8 && dateAndTime.getHourInMinutes() <= 12) ||
-            !(dateAndTime.getHourInMinutes() >= 14 && dateAndTime.getHourInMinutes() <= 18))
+            (!(dateAndTime.getHour() >= 8 && dateAndTime.getHour() <= 12) &&
+            !(dateAndTime.getHour() >= 14 && dateAndTime.getHour() <= 18)))
         {
+            System.out.println("A consulta não condiz com os tempos de funcionamento da clínica");
             return false;
         }
 
         if(getConsulta(dateAndTime) != null){
+            System.out.println("Já há uma consulta feita nesse horário");
             return false;
         }
 
         Consulta consulta = new Consulta(animal, dateAndTime, veterinario, 
-                diagnostico, medicamentos);
+                diagnostico, medicamentos, problema);
 
         consultas.add(consulta);
 
@@ -182,7 +207,7 @@ public class Clinica {
     public Consulta getConsulta(Time dateAndTime){
         for(Consulta consulta : consultas)
         {
-            if(consulta.dateAndTime == dateAndTime)
+            if(consulta.dateAndTime.time == dateAndTime.time)
             {
                 return consulta;
             }
@@ -202,6 +227,12 @@ public class Clinica {
     public boolean freeTime(Time time){
         for(Agendamento a : agendamentos){
             if(a.getDateAndTime().cmp(time) == 0){
+                return false;
+            }
+        }
+
+        for(Consulta a : consultas){
+            if(a.dateAndTime.cmp(time) == 0){
                 return false;
             }
         }
@@ -230,7 +261,7 @@ public class Clinica {
         Time secondBreak = new Time(time);
         secondBreak.setHourInMinutes(18);
         for(curTime.setHourInMinutes(14);
-            curTime.time  < firstBreak.time;
+            curTime.time  < secondBreak.time;
             curTime.addMinutes(20))
         {
             if(freeTime(curTime)){

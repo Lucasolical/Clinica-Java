@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public class Agendar extends javax.swing.JFrame {
     PanelController controller = new PanelController();
-    long defaultYear = controller.clinica.currentTime.getYearInMinutes();
+    long defaultYear = controller.clinica.currentTime.getYear();
     Tutor curTutor;
 
     public Agendar(PanelController controller){
@@ -179,7 +179,7 @@ public class Agendar extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel1))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(monthBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,9 +192,7 @@ public class Agendar extends javax.swing.JFrame {
                                             .addComponent(dayBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(BuscarTutor)
                                             .addComponent(jButton1)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(1, 1, 1))))
+                                    .addComponent(especialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(81, 81, 81)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +318,7 @@ public class Agendar extends javax.swing.JFrame {
     //
     private void acharHorariosBackEnd(){
         Time time = new Time();
-        time.setYearInMinutes(controller.clinica.currentTime.getYearInMinutes());
+        time.setYearInMinutes(controller.clinica.currentTime.getYear());
         time.setMonthInMinutes(Integer.parseInt(monthBox.getSelectedItem().toString()));
         time.setDayInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
         time.print();
@@ -329,7 +327,7 @@ public class Agendar extends javax.swing.JFrame {
 
         for(Time s : controller.clinica.getFreeTimes(time)){
             s.print();
-            timeBox.addItem(Long.toString(s.getHourInMinutes()) + ":" + Long.toString(s.getMinute()));
+            timeBox.addItem(Long.toString(s.getHour()) + ":" + Long.toString(s.getMinute()));
         }
     }
 

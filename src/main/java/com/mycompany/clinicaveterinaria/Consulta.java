@@ -9,13 +9,17 @@ public class Consulta
     Animal animal;
     Veterinario vet;
     String diagnostico;
-    List<String> medicamentosPrescritos = new ArrayList<String>();
+    String problema;
+    String medicamentosPrescritos ;
     
     public Consulta(Animal animal, Time dateAndTime, 
-            Veterinario vet, String diagnostico, List<String> medicamentosPrescritos)
+            Veterinario vet, String diagnostico, String medicamentosPrescritos,
+            String problema)
     {
         this.animal = animal;
         this.dateAndTime = dateAndTime;
+        this.problema = problema;
+        this.medicamentosPrescritos = medicamentosPrescritos;
     }
     
     public void aplicarVacina(VacinaAplicada vac){
