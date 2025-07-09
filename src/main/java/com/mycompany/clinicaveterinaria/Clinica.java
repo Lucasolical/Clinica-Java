@@ -296,7 +296,7 @@ public class Clinica {
 
         List<Veterinario> veterinarios = new ArrayList<Veterinario>();
         veterinarios.add(new Veterinario("Lucas", "lucas@gmail.com",
-                    getSpecialty("Fisioterapeuta"), "74040099301",
+                    getSpecialty("Fisioterapeuta"), "321",
                     "71903574839", "SP-12345"));
         veterinarios.add(new Veterinario("Mariana", "MarianaSouza@gmail.com",
                     getSpecialty("Oftamologista"), "84012345678",

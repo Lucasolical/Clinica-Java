@@ -17,6 +17,10 @@ public class CadastroVet extends javax.swing.JFrame {
     public CadastroVet(PanelController controller){
         initComponents();
         this.controller = controller;
+        especialidade.removeAllItems();
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }  
     }
 
    Cadastro CadJ;
@@ -28,6 +32,10 @@ public class CadastroVet extends javax.swing.JFrame {
         initComponents();
         this.controller = new PanelController();
         this.controller.setPanel(this);
+        especialidade.removeAllItems();
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }  
     }
 
     /**
@@ -76,7 +84,6 @@ public class CadastroVet extends javax.swing.JFrame {
 
         jLabel3.setText("Especialidade:");
 
-        especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oftalmologista", "Cardiologista" }));
         especialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 especialidadeActionPerformed(evt);

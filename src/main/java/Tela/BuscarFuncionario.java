@@ -21,6 +21,10 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     public BuscarFuncionario(PanelController controller){
         initComponents();
         this.controller = controller;
+        especialidade.removeAllItems();
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }  
     }
 
     Busca buscaJ;
@@ -30,6 +34,11 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     public BuscarFuncionario() {
         initComponents();
         this.controller.setPanel(this);
+
+        especialidade.removeAllItems();
+        for(String esp: controller.clinica.getSpecialtiesAsStrings()){
+            especialidade.addItem(esp);
+        }  
     }
 
     /**
