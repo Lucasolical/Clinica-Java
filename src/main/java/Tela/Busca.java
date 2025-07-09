@@ -162,7 +162,7 @@ public class Busca extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void voltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBActionPerformed
-        controller.panelReturn(this);     // TODO add your handling code here:
+        controller.panelReturn();     // TODO add your handling code here:
     }//GEN-LAST:event_voltarBActionPerformed
 
     private void jLabel1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel1PropertyChange

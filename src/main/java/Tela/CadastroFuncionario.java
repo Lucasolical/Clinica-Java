@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
     PanelController controller = new PanelController();
-
+    
     public CadastroFuncionario(PanelController controller){
         initComponents();
         this.controller = controller;
