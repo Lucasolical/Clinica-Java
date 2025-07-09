@@ -60,6 +60,14 @@ public class Animal
     public String getBirthDate(){
         return birthDate;
     }
+    public VacinaAplicada getVacina(String a){
+        for(VacinaAplicada v : cartaoDeVacina){
+            if(a == v.getTipo().nome){
+                return v;
+            }
+        }
+        return null;
+    }
     public Tutor getTutor(){
         return tutor;
     }

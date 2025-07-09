@@ -41,6 +41,19 @@ public class Clinica {
         return null;
     }
 
+    public Veterinario getVet(Specialty spec){
+        for (User a : users) {
+            if (a instanceof Veterinario) {
+                Veterinario vet = (Veterinario) a;
+                if(vet.specialty == spec){
+                    return vet;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public Vacina getVacina(String vacina){
         for(Vacina vac : tiposVacinas){
             if(vacina.equals(vac.nome)){
