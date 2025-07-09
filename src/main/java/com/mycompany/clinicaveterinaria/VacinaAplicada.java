@@ -21,12 +21,9 @@ public class VacinaAplicada
     }
 
     public Time getDataDeValidade(){
-        Time dataDeValidade = null;
-        try{
-            dataDeValidade = (Time)dataFeita.clone();
-        }
-        catch(Exception e){
-        }
+        Time dataDeValidade = new Time();
+        dataDeValidade.time = dataFeita.time;
+
 
         dataDeValidade.addYears(anosDeValidade);
 

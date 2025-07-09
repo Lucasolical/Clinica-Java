@@ -279,7 +279,13 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EditarActionPerformed
 
     private void EmitirVacinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmitirVacinaActionPerformed
-        controller.panelSwitch(new EmitirCVacina(tu.getAnimal(Animais.getSelectedItem().toString())));
+        Animal a = tu.getAnimal(Animais.getSelectedItem().toString());
+        if(a == null){
+            System.out.println("There is no animal");
+
+            return; 
+        }
+        controller.panelSwitch(new EmitirCVacina(controller, a));
     }//GEN-LAST:event_EmitirVacinaActionPerformed
 
     private void Adicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Adicionar2ActionPerformed

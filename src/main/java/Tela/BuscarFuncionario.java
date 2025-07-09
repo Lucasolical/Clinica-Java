@@ -317,9 +317,7 @@ public class BuscarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_PesquisarActionPerformed
 
     private void VoltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBActionPerformed
-        buscaJ = new Busca();
-        buscaJ.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        controller.panelReturn();
     }//GEN-LAST:event_VoltarBActionPerformed
 
     private void especialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeActionPerformed

@@ -5,6 +5,7 @@
 package Tela;
 
 import com.mycompany.clinicaveterinaria.*;
+import java.util.*;
 
 /**
  *
@@ -26,17 +27,19 @@ public class EmitirCVacina extends javax.swing.JFrame {
         initComponents();
         this.controller.setPanel(this);
     }
-    public EmitirCVacina(Animal ani) {
-        controller = new PanelController();
+    public EmitirCVacina(PanelController controller, Animal ani) {
+        System.out.println("Entrando em emitir vacina");
         initComponents();
-        this.controller.setPanel(this);
+        if(ani == null)this.dispose();
+        this.controller = controller;
         an = ani;
-        for(VacinaAplicada va:an.getCartaoDeVacina()){
+        List<VacinaAplicada> a = an.getCartaoDeVacina();
+        if(a == null){
+            System.out.println("Não há carão de vacina.");
+        }
+        for(VacinaAplicada va:a){
             Vacinas.addItem(va.getTipo().nome);
         }
-        
-        
-        
     }
 
     /**
@@ -96,6 +99,11 @@ public class EmitirCVacina extends javax.swing.JFrame {
         });
 
         jToggleButton3.setText("Voltar");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         homeButton.setForeground(new java.awt.Color(255, 0, 0));
         homeButton.setText("🏠︎");
@@ -179,12 +187,22 @@ public class EmitirCVacina extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void VacinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VacinasActionPerformed
+        if(an == null){
+            System.out.println("Animal não existe.");
+            return;
+        }
         VacinaAplicada vacAplicada = an.getVacina(Vacinas.getSelectedItem().toString());
+        DataA.setText(vacAplicada.getDataFeita().toString());
+        Datab.setText(vacAplicada.getDataDeValidade().toString());
     }//GEN-LAST:event_VacinasActionPerformed
 
     private void DataAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DataAActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        controller.panelReturn();
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments
