@@ -61,12 +61,15 @@ public class Clinica {
         return true;
     }
 
+    public void deleteUser(User user){
+        users.remove(user);
+    }
+
     public boolean signUser(User user) {
         if(!cpfIsUnique(user.cpf))
             return false;
 
         users.add(user);
-        System.out.println("Usuário cadastrado.");
 
         return true;
     }

@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public class Agendar extends javax.swing.JFrame {
     PanelController controller = new PanelController();
-    final long defaultYear = controller.clinica.currentTime.getYearInMinutes();
+    long defaultYear = controller.clinica.currentTime.getYearInMinutes();
     Tutor curTutor;
 
     public Agendar(PanelController controller){
