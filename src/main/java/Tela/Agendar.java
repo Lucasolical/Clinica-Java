@@ -158,7 +158,7 @@ public class Agendar extends javax.swing.JFrame {
         jButton4.setText("Agendar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                agendar(evt);
             }
         });
 
@@ -293,7 +293,7 @@ public class Agendar extends javax.swing.JFrame {
                // TODO add your handling code here:
     }//GEN-LAST:event_especialidadeActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void agendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if(curTutor == null)return;
         Time time = new Time();
         time.setYearInMinutes(defaultYear);
@@ -321,12 +321,14 @@ public class Agendar extends javax.swing.JFrame {
     private void acharHorariosBackEnd(){
         Time time = new Time();
         time.setYearInMinutes(controller.clinica.currentTime.getYearInMinutes());
-        time.setMonthInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
+        time.setMonthInMinutes(Integer.parseInt(monthBox.getSelectedItem().toString()));
         time.setDayInMinutes(Integer.parseInt(dayBox.getSelectedItem().toString()));
         time.print();
 
         timeBox.removeAllItems();
+
         for(Time s : controller.clinica.getFreeTimes(time)){
+            s.print();
             timeBox.addItem(Long.toString(s.getHourInMinutes()) + ":" + Long.toString(s.getMinute()));
         }
     }
