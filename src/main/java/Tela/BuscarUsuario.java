@@ -196,6 +196,10 @@ public class BuscarUsuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+     
+    }//GEN-LAST:event_editarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +229,7 @@ public class BuscarUsuario extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new BuscarUsuario().setVisible(true);
             }
