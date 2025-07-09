@@ -73,8 +73,9 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
         Editar = new javax.swing.JToggleButton();
         Voltar = new javax.swing.JToggleButton();
         homeButton = new javax.swing.JButton();
-        Adicionar1 = new javax.swing.JToggleButton();
+        EmitirVacina = new javax.swing.JToggleButton();
         Adicionar2 = new javax.swing.JToggleButton();
+        Excluir = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,10 +135,10 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        Adicionar1.setText("Emitir Vacinas");
-        Adicionar1.addActionListener(new java.awt.event.ActionListener() {
+        EmitirVacina.setText("Emitir Vacinas");
+        EmitirVacina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Adicionar1ActionPerformed(evt);
+                EmitirVacinaActionPerformed(evt);
             }
         });
 
@@ -145,6 +146,13 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
         Adicionar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Adicionar2ActionPerformed(evt);
+            }
+        });
+
+        Excluir.setText("Excluir");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
             }
         });
 
@@ -185,17 +193,16 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(Adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(Adicionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addComponent(EmitirVacina, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Adicionar2)
+                .addGap(12, 12, 12))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Adicionar2)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Voltar)
-                        .addGap(185, 185, 185))))
+                .addComponent(Excluir)
+                .addGap(80, 80, 80)
+                .addComponent(Voltar)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,10 +240,12 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Adicionar2)
                     .addComponent(Adicionar)
-                    .addComponent(Adicionar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(Voltar)
-                .addGap(30, 30, 30))
+                    .addComponent(EmitirVacina))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Voltar)
+                    .addComponent(Excluir))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -269,13 +278,17 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
         controller.panelSwitch(new CadastroTutor(controller, tu, tu.getAnimal(Animais.getSelectedItem().toString())));        
     }//GEN-LAST:event_EditarActionPerformed
 
-    private void Adicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Adicionar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Adicionar1ActionPerformed
+    private void EmitirVacinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmitirVacinaActionPerformed
+        controller.panelSwitch(new EmitirCVacina(tu.getAnimal(Animais.getSelectedItem().toString())));
+    }//GEN-LAST:event_EmitirVacinaActionPerformed
 
     private void Adicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Adicionar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Adicionar2ActionPerformed
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        controller.clinica.deleteUser(tu);                // TODO add your handling code here:
+    }//GEN-LAST:event_ExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,13 +330,14 @@ public class ResultadoEditarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Adicionar;
-    private javax.swing.JToggleButton Adicionar1;
     private javax.swing.JToggleButton Adicionar2;
     private javax.swing.JComboBox<String> Animais;
     private javax.swing.JTextField Cpf;
     private javax.swing.JToggleButton Editar;
     private javax.swing.JTextField Email;
+    private javax.swing.JToggleButton EmitirVacina;
     private javax.swing.JTextField Endereco;
+    private javax.swing.JToggleButton Excluir;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Telefone;
     private javax.swing.JToggleButton Voltar;

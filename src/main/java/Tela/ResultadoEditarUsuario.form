@@ -64,21 +64,17 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="Adicionar" min="-2" pref="128" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
-              <Component id="Adicionar1" min="-2" pref="128" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+              <Component id="EmitirVacina" min="-2" pref="128" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Adicionar2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="Adicionar2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="Voltar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="Excluir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="Voltar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -125,11 +121,14 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Adicionar2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Adicionar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Adicionar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EmitirVacina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Component id="Voltar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Excluir" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -234,12 +233,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="Adicionar1">
+    <Component class="javax.swing.JToggleButton" name="EmitirVacina">
       <Properties>
         <Property name="text" type="java.lang.String" value="Emitir Vacinas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Adicionar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmitirVacinaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="Adicionar2">
@@ -248,6 +247,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Adicionar2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="Excluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
